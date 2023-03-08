@@ -10,6 +10,7 @@ import { RegisterComponent } from './Actions/register/register.component';
 import { HomeComponent } from './Others/home/home.component';
 import { ProductsComponent } from './Others/products/products.component';
 import { AboutComponent } from './Others/about/about.component';
+import { ForTeamsComponent } from './Others/for-teams/for-teams.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { AboutComponent } from './Others/about/about.component';
     RegisterComponent,
     HomeComponent,
     ProductsComponent,
-    AboutComponent
+    AboutComponent,
+    ForTeamsComponent
   ],
   imports: [
     BrowserModule,
