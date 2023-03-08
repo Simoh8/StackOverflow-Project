@@ -11,6 +11,8 @@ import { HomeComponent } from './Others/home/home.component';
 import { ProductsComponent } from './Others/products/products.component';
 import { AboutComponent } from './Others/about/about.component';
 import { ForTeamsComponent } from './Others/for-teams/for-teams.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -22,11 +24,14 @@ import { ForTeamsComponent } from './Others/for-teams/for-teams.component';
     HomeComponent,
     ProductsComponent,
     AboutComponent,
-    ForTeamsComponent
+    ForTeamsComponent,
+        
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
