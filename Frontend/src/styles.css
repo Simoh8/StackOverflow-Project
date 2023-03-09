@@ -1,1 +1,84 @@
-/* You can add global styles to this file, and also import other style files */
+img{
+    height: 2rem;
+ justify-self: center;
+ align-self: center;
+}
+form{
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 2rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.2);
+
+
+}
+input{
+    height: 2rem;
+    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.2);
+    border: none;
+    border-radius: 0.5rem;
+    padding: 10px;
+
+}
+.btngog{
+   align-content: center;
+   border: 1px solid black;
+   box-shadow: 0 0 1rem rgba(0, 0, 0, 0.2);
+
+   width: 98%;
+   display: flex;
+   gap: 1rem;
+   justify-content: center;
+   border-radius: 1rem;
+}
+.btnfb{
+    background-color: #33A6FF;
+    align-content: center;
+    width: 98%;
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    border-radius: 1rem;
+ }
+ .btngit{
+    background-color: black;
+    color: white;
+    align-content: center;
+    width: 98%;
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    border-radius: 1rem;
+ }
+button{
+    width: fit-content;
+    align-self: center;
+    background-color: #0F97FF;
+    border: none;
+    height: 2rem;
+    border-radius: 0.5rem;
+    color: #fff;
+}
+.im{
+   
+    background-color: #fff;
+    border-radius: 50%;
+}
+.links{
+    color: #0F97FF;
+
+}
+.reg{
+    display: flex;
+   
+    flex-direction: column;
+}
+.single{
+    display: flex;
+    flex-direction: row;
+   
+    flex-wrap: wrap;
+}
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

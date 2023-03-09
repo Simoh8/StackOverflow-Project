@@ -1,4 +1,5 @@
 <header>
+ 
     <div class="container ">
       <img src="https://img.icons8.com/ios-glyphs/1x/menu-rounded.png" alt="" routerLink="/">
 <img class="logo" src="https://www.logo.wine/a/logo/Stack_Overflow/Stack_Overflow-Logo.wine.svg" alt="" routerLink="/" >      
@@ -9,9 +10,10 @@
         <img class="icon" src="https://img.icons8.com/ios-glyphs/1x/search.png" alt="">
         <input class="searchbarinput" type="text" placeholder="Search ...">
       </div>
-    <button class="login" routerLink="/login">Login</button>
-    <button class="sign-up"routerLink="/register" >Sign Up</button>
-      
+      <button (click)="tooggle" routerLink="/login" class="login" *ngIf="!showbutton">Login</button>
+      <!-- <button  (click)="tooggle" *ngIf="showbutton" routerLink="" class="sign-up" >Profile</button> -->
 
+      <button routerLink="/register" class="sign-up" >Sign Up</button>
     </div>
+    <!-- <i class="fa-brands fa-github"></i> -->
 </header>

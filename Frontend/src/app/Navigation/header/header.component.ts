@@ -7,4 +7,8 @@ import { Component } from '@angular/core';
 })
 export class HeaderComponent {
 
+  showbutton: boolean = false;
+  tooggle(){
+    this.showbutton = !this.showbutton;
+  }
 }
