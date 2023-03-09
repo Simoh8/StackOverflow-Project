@@ -37,6 +37,7 @@ const routes: Routes = [
   {path: 'registertalent', component: TalentloginComponent},
   {path: 'register', component: RegisterComponent}, 
   {path: 'forgotpassword', component: ForgotPasswordComponent},
+  {path: 'userprofile', component: UserProfileComponent},
   {path: 'products', component: ProductsComponent},
   {path: 'forteams', component: ForTeamsComponent},
   {path: 'about', component: AboutComponent},
