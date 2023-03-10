@@ -52,7 +52,7 @@ const routes: Routes = [
     FooterComponent,
     LoginComponent,
     RegisterComponent,
-    HomeComponent,
+    // HomeComponent,
     ProductsComponent,
     AboutComponent,
     ForTeamsComponent,
