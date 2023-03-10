@@ -56,7 +56,7 @@ const routes: Routes = [
     ProductsComponent,
     AboutComponent,
     ForTeamsComponent,
-    PageNotFoundComponent,
+    // PageNotFoundComponent,
     TalentloginComponent,
     ForgotPasswordComponent,
     UserProfileComponent,
