@@ -1,11 +1,15 @@
-import { Time } from '@angular/common';
+import { CommonModule, Time } from '@angular/common';
 import { Component } from '@angular/core';
+import { PostQuestionComponent } from '../post-question/post-question.component';
+import { AppModule } from 'src/app/app.module';
+import { Route, Router, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   standalone:true,
-  styleUrls: ['./home.component.css']
+  styleUrls: ['./home.component.css'],
+  imports: [CommonModule,RouterModule]
 })
 export class HomeComponent {
 tags: string[] = [

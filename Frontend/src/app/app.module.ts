@@ -8,7 +8,6 @@ import { FooterComponent } from './Navigation/footer/footer.component';
 import { LoginComponent } from './Actions/login/login.component';
 import { RegisterComponent } from './Actions/register/register.component';
 import { HomeComponent } from './Others/home/home.component';
-import { ProductsComponent } from './Others/products/products.component';
 import { AboutComponent } from './Others/about/about.component';
 import { ForTeamsComponent } from './Others/for-teams/for-teams.component';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -25,10 +24,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { ForgotPasswordComponent } from './Others/forgot-password/forgot-password.component';
 import { UserProfileComponent } from './Others/user-profile/user-profile.component';
-import { SingleQuestionComponent } from './Others/single-question/single-question.component';
 import { PostQuestionComponent } from './Others/post-question/post-question.component';
 import { AdminComponent } from './Others/admin/admin.component';
-import { UsersComponent } from './Others/users/users.component';
 
 const routes: Routes = [
   
@@ -38,7 +35,7 @@ const routes: Routes = [
   {path: 'register', component: RegisterComponent}, 
   {path: 'forgotpassword', component: ForgotPasswordComponent},
   {path: 'userprofile', component: UserProfileComponent},
-  {path: 'products', component: ProductsComponent},
+  {path: 'postquestion', component: PostQuestionComponent},
   {path: 'forteams', component: ForTeamsComponent},
   {path: 'about', component: AboutComponent},
   {path: '**', component: PageNotFoundComponent}
@@ -48,22 +45,7 @@ const routes: Routes = [
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent,
-    FooterComponent,
-    LoginComponent,
-    RegisterComponent,
-    // HomeComponent,
-    ProductsComponent,
-    AboutComponent,
-    ForTeamsComponent,
-    // PageNotFoundComponent,
-    TalentloginComponent,
-    ForgotPasswordComponent,
-    UserProfileComponent,
-    SingleQuestionComponent,
-    PostQuestionComponent,
-    AdminComponent,
-    UsersComponent,
+
 
         
   ],
@@ -79,7 +61,19 @@ const routes: Routes = [
     MatButtonModule,
     MatSidenavModule,
     MatIconModule,
-    MatListModule
+    MatListModule,
+    HeaderComponent,
+    FooterComponent,
+    LoginComponent,
+    RegisterComponent,
+    HomeComponent,
+    AboutComponent,
+    ForTeamsComponent,
+    TalentloginComponent,
+    ForgotPasswordComponent,
+    UserProfileComponent,
+    PostQuestionComponent,
+    AdminComponent,
   ],
   providers: [],
   bootstrap: [AppComponent]
