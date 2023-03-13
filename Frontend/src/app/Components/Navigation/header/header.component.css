@@ -1,0 +1,59 @@
+.container{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.2);
+    font-weight: bold;
+    justify-content: space-evenly;
+
+}
+.searchbar{
+    align-self: center;
+  
+    padding: 0px 10px;
+    border-radius: 10px;
+    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.2);
+
+}
+.searchbarinput{
+    border: none;
+    outline: none;
+    padding-top: 10px;
+    height: 2rem;
+    border-radius: 10px;
+    box-shadow: none;
+
+}
+.logo{
+    height: 5rem;
+}
+img{
+    height: 3rem;
+    align-self: center;
+}
+.icon{
+    height: 15px;
+}
+input{
+    border: none;
+}
+p{
+    font-size: 0.8rem;
+    align-self: center;
+}
+button{
+    align-self: center;
+    background-color: #0F97FF;
+    border: none;
+    outline: none;
+    height: 2rem;
+    border-radius: 10px;
+    color: white;
+
+}
+@media only screen and (max-width: 600px) {
+  .container{
+    flex-wrap: wrap;
+    flex-shrink: 2;
+  }
+  }

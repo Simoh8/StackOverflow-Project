@@ -25,7 +25,6 @@ input{
    align-content: center;
    border: 1px solid black;
    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.2);
-
    width: 98%;
    display: flex;
    gap: 1rem;
@@ -71,14 +70,61 @@ button{
 }
 .reg{
     display: flex;
-   
     flex-direction: column;
 }
 .single{
     display: flex;
     flex-direction: row;
-   
     flex-wrap: wrap;
 }
 html, body { height: 100%; }
+
+
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.left-column{
+    padding-right: 2rem;
+    padding: 10px;
+   
+    background-color: #FFE5E5;
+    
+}
+@media only screen and (max-width: 600px) {
+    .homecon {
+      font-size: small;
+      overflow: hidden;
+      padding: 10px;
+    }
+    .maindivregister{
+        font-size: small;
+        padding: 1rem;
+        overflow: hidden;
+    }
+
+    button{
+        flex-shrink: 2;
+        font-size: smaller;
+    }
+    .container{
+        font-size: small;
+    }
+    div{
+        flex-shrink: 2rem;
+    }
+    
+    footer{
+        flex-shrink: 1;
+        flex-wrap: wrap;
+        width: 20%;
+      }
+      header{
+ flex-wrap: wrap;
+ flex-shrink: 1;
+
+
+      }
+      textarea{
+        width: 2rem;
+     }
+  }
+

@@ -1,0 +1,59 @@
+.card{
+
+    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.2);
+    border: 1px solid black;
+    padding: 1rem;
+
+}
+.meta{
+
+    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.2);
+    border: 1px solid black;
+    padding: 1rem;
+    border-radius: 2rem;
+    height: fit-content;
+
+}
+
+.profilecontainer{
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+.divone{
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+
+}
+.about{
+    width: 50%;
+    height: 10rem;
+    border-radius: 2rem;
+    padding: 1rem;
+    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.2);
+
+}
+.dp{
+    height: 5rem;
+    border-radius: 50%;
+    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.2);
+
+}
+.divtwo{
+    display: flex;
+    flex-direction: row;
+    gap: 3rem;
+    justify-content: space-evenly;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+
+}
+label{
+    color: darkorange;
+}
+@media only screen and (max-width: 700px) {
+   .profilecontainer  {
+font-size: smaller;    }
+  }

@@ -1,0 +1,213 @@
+<div class="homecon">
+    <div class="right-column">
+        <div class="menuhome" Highlighter>
+    <h6 routerLink="" clickColor>Home </h6>
+    <!-- <h6 routerLink=""  clickColor>public</h6> -->
+    <!-- <h6 routerLink="" clickColor>Question</h6> -->
+    <h6 routerLink="" clickColor>Tags</h6>
+    <h6 routerLink="" clickColor>Users</h6>
+    <!-- <h6 routerLink="" clickColor>Companies</h6>
+    <h6 routerLink="" clickColor>Explore Collectives</h6>
+    <h6 routerLink="" clickColor>Teams</h6>
+    <p>Stack Overflow for Teams - Start collaborating and sharing organizational knowledge.</p> -->
+    <button [@buttonAnimation]="animationState" (click)="animateButton()">Create a free Team</button>
+    <p >why Teams ?</p>
+    </div>
+</div>
+
+
+    <div class="center">
+        
+        <div class="top">
+        <h6>All Questions</h6>
+        <button routerLink="postquestion" >Ask Questions</button>
+    </div>
+<div class="buttonsdiv">
+    <button > interesting</button>
+    <button  class="button-animation">Bountied</button>
+    <button  class="button-animation">Hot</button>
+    <button  class="button-animation">Week</button>
+    <button  class="button-animation" appButtonAnimation> Filter</button>
+</div>
+<div><hr></div>
+<div class="divquestion">
+    <div class="matrix">
+    <div class="votes">
+         <p>{{votes}} Votes</p>
+         <p>{{answers}} Answers</p>
+         <p>{{views}} Views</p>
+    </div>
+     <div class="quiz">
+    <p style="color: #0F97FF; "> {{question | truncate: 50 | titleCase }}</p>
+
+    <div class="descriptions">
+        {{description | truncate: 50}}
+    </div>
+</div>
+</div>
+
+<div class="tagstime">
+<div style="background-color: rgb(154, 146, 146); padding: 0.5rem; border-radius: 0.5rem;">{{tags}}</div>
+    {{icon}}
+    {{user}}
+    {{timestamp}}
+</div>
+
+</div>
+
+
+<div><hr></div>
+<div class="divquestion">
+    <div class="matrix">
+    <div class="votes">
+         <p>{{votes}} Votes</p>
+         <p>{{answers}} Answers</p>
+         <p>{{views}} Views</p>
+    </div>
+     <div class="quiz">
+    <p style="color: #0F97FF; "> {{question| truncate:50 |titleCase}}</p>
+
+    <div class="descriptions">
+        {{description | truncate:50}}
+    </div>
+</div>
+</div>
+
+<div class="tagstime">
+<div style="background-color: rgb(154, 146, 146); padding: 0.5rem; border-radius: 0.5rem;">{{tags}}</div>
+    {{icon}}
+    {{user}}
+    {{timestamp}}
+</div>
+
+</div>
+
+<div><hr></div>
+<div class="divquestion">
+    <div class="matrix">
+    <div class="votes">
+         <p>{{votes}} Votes</p>
+         <p>{{answers}} Answers</p>
+         <p>{{views}} Views</p>
+    </div>
+     <div class="quiz">
+    <p style="color: #0F97FF; "> {{question | truncate:50 |titleCase}}</p>
+
+    <div class="descriptions">
+        {{description | truncate:50}}
+    </div>
+</div>
+</div>
+
+<div class="tagstime">
+<div style="background-color: rgb(154, 146, 146); padding: 0.5rem; border-radius: 0.5rem;">{{tags}}</div>
+    {{icon}}
+    {{user}}
+    {{timestamp}}
+</div>
+
+</div>
+
+
+<div><hr></div>
+<div class="divquestion">
+    <div class="matrix">
+    <div class="votes">
+         <p>{{votes}} Votes</p>
+         <p>{{answers}} Answers</p>
+         <p>{{views}} Views</p>
+    </div>
+     <div class="quiz">
+    <p style="color: #0F97FF; "> {{question | truncate:50|titleCase}}</p>
+
+    <div class="descriptions">
+        {{description | truncate:50}}
+    </div>
+</div>
+</div>
+
+<div class="tagstime">
+<div style="background-color: rgb(154, 146, 146); padding: 0.5rem; border-radius: 0.5rem;">{{tags}}</div>
+    {{icon}}
+    {{user}}
+    {{timestamp}}
+</div>
+
+</div>
+<div class="pages">
+    <div class="f">
+    <button>1</button>
+    <button>2</button>
+    <button>3</button>
+    <button>4</button>
+    <button>5</button>
+    <button>6</button>
+    <p>...</p>
+    <button>100</button>
+    <button>Next</button>
+
+    
+</div>
+<div class="l">
+    <button>12</button>
+    <button>13</button>
+    <button>14</button>
+    <button>Per page</button>
+
+
+
+
+</div>
+
+
+
+
+
+</div>
+    </div>
+
+    <div class="left-column">
+        <div class="blog">
+            <h6>The Overflow Blog</h6>
+            <hr>
+            <div class="singleblog">
+                <img src="https://img.icons8.com/ios/1x/edit.png" alt="">
+                {{blog}}
+            </div>
+            <div class="singleblog">
+                <img src="https://img.icons8.com/ios/1x/edit.png" alt="">
+                {{blog}}
+            </div>
+            <div style="background-color: gray; padding: 1rem;"> <p>Featured on Meta</p></div>
+<div class="featured">
+    <img src="https://cdn-icons-png.flaticon.com/512/2111/2111690.png" alt="">
+    {{featured}}
+</div>
+<div class="featured">
+    <img src="https://cdn-icons-png.flaticon.com/512/2111/2111690.png" alt="">
+    {{featured}}
+</div>
+<div class="featured">
+    <img src="https://cdn-icons-png.flaticon.com/512/2111/2111690.png" alt="">
+    {{featured}}
+</div>
+
+<div class="collectivediv">
+    <div class="div1">
+        <p>Collectives</p>
+       <p style="color: #0F97FF;"> see all</p>
+    </div>
+<div><hr></div>
+    <div class="div2">
+     <img src="https://img.icons8.com/color/1x/conference-call--v2.gif" alt="">   
+   <p>  {{communityname }} {{members}} members  </p>
+   <button> Join</button>
+    </div>
+    <div><hr></div>
+
+</div>
+
+        </div>
+
+    </div>
+</div>

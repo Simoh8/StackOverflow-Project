@@ -1,6 +1,8 @@
- export interface User{
-    name:string;
-    email:string;
-    password:string;
-    question:number;
-}
+export interface User {
+    id: number;
+    name: string;
+    profileImage: string;
+    reputation: number;
+    badges: Tag[];
+  }
+  

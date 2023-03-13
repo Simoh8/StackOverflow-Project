@@ -1,0 +1,7 @@
+interface Tag {
+    id: number;
+    name: string;
+    description: string;
+    followers: number;
+    questions: number;
+  }
