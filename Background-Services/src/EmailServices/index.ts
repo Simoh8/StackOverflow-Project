@@ -1,7 +1,8 @@
 import ejs from 'ejs'
 import sendMail from '../Helpers/email';
+// import mssql from 'mssql'
 import mssql from 'mssql'
-import { sqlConfig } from '../Config';
+import { sqlConfig } from '../config';
 
 interface User{
 Id:string
@@ -14,7 +15,7 @@ Password:string
 const sendWelcomeEmail = async()=>{
     const pool = await mssql.connect(sqlConfig)
     const users:User[]= await(await pool.request().
-    query("SELECT * FROM UserTable WHERE isSent ='0'")).recordset
+    query("SELECT * FROM users WHERE isSent ='0'")).recordset
     // console.log(users);
 
 for(let user of users){
@@ -30,7 +31,7 @@ for(let user of users){
 
  try {
 await sendMail(message) 
-await pool.request().query(`UPDATE UserTable SET isSent ='1' WHERE Id ='${user.Id}'`)
+await pool.request().query(`UPDATE user SET isSent ='1' WHERE Id ='${user.Id}'`)
  } catch (error) {
     console.log(error);
     
