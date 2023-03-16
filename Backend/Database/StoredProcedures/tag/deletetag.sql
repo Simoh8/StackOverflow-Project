@@ -1,0 +1,11 @@
+USE Stack
+GO
+CREATE PROCEDURE deleteTagById
+    @id VARCHAR(255)
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    DELETE FROM tag WHERE id = @id;
+
+END;

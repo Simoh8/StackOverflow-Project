@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, ReactiveFormsModule, FormControl } from '@angular/forms';
 
 
 
@@ -10,9 +10,12 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
   templateUrl: './login.component.html',
   standalone: true,
   styleUrls: ['./login.component.css'],
-  imports:  [CommonModule,RouterModule]
+  imports:  [CommonModule,RouterModule,ReactiveFormsModule]
 })
-export class LoginComponent {
+export class LoginComponent  implements OnInit{
+login() {
+throw new Error('Method not implemented.');
+}
   myForm: FormGroup;
 
 
@@ -23,6 +26,13 @@ export class LoginComponent {
       password: ['', [Validators.required, Validators.minLength(6)]],
     
     });
-  }
 
-}
+  }
+  
+  ngOnInit(): void {
+this.myForm=new FormGroup({ 
+  password: new FormControl(null,Validators.required),
+  email:new FormControl(null,[Validators.required,Validators.email])
+ })
+
+}}

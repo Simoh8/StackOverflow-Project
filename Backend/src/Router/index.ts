@@ -1,15 +1,15 @@
 import { Router } from "express";
-import { addBooking, cancelBooking, getBookings, getbyEmail, getOneBooking, updateBooking } from "../src/Controller/flightBookingController";
 import { VerifyToken } from "../Middlewares/VerifyToken";
+import {  getOneQuestion, deleteQuestion, getbyEmail, getQuestion } from "../Controller/QuestionController";
 
 const router = Router()
 
-router.get('', VerifyToken, getBookings)
-router.get('/:id',VerifyToken, getOneBooking)
-router.post('',VerifyToken, addBooking)
-router.get('/booking/emails',VerifyToken, getbyEmail)
-router.put('/:id',VerifyToken, updateBooking)
-router.delete('/:id', cancelBooking)
+router.get('/question', getQuestion)
+router.get('/:id', getOneQuestion)
+// router.post('',VerifyToken, addQuestion)
+router.get('/questions/emails',VerifyToken, getbyEmail)
+// router.put('/:id',VerifyToken, updateQuestion)
+router.delete('/:id', deleteQuestion)
 
 
 export default router

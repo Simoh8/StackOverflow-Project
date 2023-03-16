@@ -12,7 +12,7 @@ const  _db = new DatabaseHelper()
 dotenv.config({ path: path.resolve(__dirname, '../../.env') })
 
 interface ExtendedRequest extends Request{
-    body:{Name:string ,Email:string,Password:string, ConfirmPassword:string}
+    body:{Name:string ,Email:string,Password:string}
     info?:DecodedData
 }
 export async function RegisterUser(req:ExtendedRequest, res:Response){
@@ -25,7 +25,7 @@ try {
     }
     const hashedPassword= await Bcrypt.hash(Password,10)
     ///check if email exist
-    await _db.exec('RegisterUser', {id,name:Name,email:Email, password:hashedPassword})
+    await _db.exec('InsertOrUpdateUser', {id,name:Name,email:Email, password:hashedPassword})
     return res.status(201).json({message:'User registered'})
 
 } 
