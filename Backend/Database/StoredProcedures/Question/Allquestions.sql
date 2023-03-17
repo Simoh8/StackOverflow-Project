@@ -1,4 +1,5 @@
 USE Stack
+EXEC getAllQuestions
 GO
 CREATE PROCEDURE getAllQuestions
 AS

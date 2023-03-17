@@ -1,6 +1,7 @@
 USE Stack
+EXEC getAllUsers;
 GO
-CREATE PROCEDURE getAllUsers
+CREATE OR ALTER PROCEDURE getAllUsers
 AS
 BEGIN
     SET NOCOUNT ON;
@@ -8,3 +9,6 @@ BEGIN
     SELECT *
     FROM users;
 END;
+
+
+SELECT * from  users

@@ -1,8 +1,10 @@
 USE Stack
-EXEC getQuestion;
+-- EXEC getSinglequestionQuestion  @title = 'What is the difference between Python 2 and Python 3?';
+
+-- SELECT * FROM question
 
 GO
-CREATE PROCEDURE getQuestions
+CREATE OR ALTER PROCEDURE getSinglequestionQuestion
     @id VARCHAR(255) = NULL,
     @title VARCHAR(255) = NULL,
     @author VARCHAR(255) = NULL
@@ -10,9 +12,10 @@ AS
 BEGIN
     SET NOCOUNT ON;
     
-    SELECT * FROM question
-    WHERE (@id IS NULL OR id = @id)
-      AND (@title IS NULL OR title = @title)
-      AND (@author IS NULL OR author = @author);
+         IF @id IS NOT NULL
+        SELECT * FROM question WHERE id = @id;
+    
+        
         
 END;
+EXEC getQuestion;

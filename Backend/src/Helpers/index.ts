@@ -3,8 +3,8 @@ import Joi, { ref } from 'joi'
 
 export const 
 RegistrationSchema= Joi.object({
-     Name:Joi.string().required(),
-     Email:Joi.string().required().email().messages({
+     name:Joi.string().required(),
+     email:Joi.string().required().email().messages({
         'string.empty':' Please add an Email',
         'string.email':'Not a Valid Email'
 
@@ -15,20 +15,24 @@ RegistrationSchema= Joi.object({
 })
 
 export const LoginSchema= Joi.object({
-     Email:Joi.string().required().email().messages({
+     email:Joi.string().required().email().messages({
         'string.empty':' Please add an Email',
         'string.email':'Not a Valid Email'
     }),
-    Password:Joi.string().required(),
+    password:Joi.string().required(),
 
 })
 
 export const AddQuestion= Joi.object({
-    Title:Joi.string().required().messages({
+    title:Joi.string().required().messages({
        'string.empty':' Please add a title for your question',
    }),
-   Content:Joi.string().required(),
-   Comment:Joi.string().required(),
+   
+   content:Joi.string().required(),
+   tags:Joi.string().required(),
+ 
+
+
    
 
 

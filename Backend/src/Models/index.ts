@@ -4,7 +4,10 @@
 
 
 export class User{
-    constructor(public id:string, public name:string , public email:string, public password:string, public role:string){}
+
+    
+    constructor(public id:string, public name:string ,public role:string, public email:string, public password:string, reputation: string){}
+    
 }
 
 
@@ -12,7 +15,7 @@ export interface DecodedData{
   id: string,
   name:string,
   email:string,
-  role: string,
+  reputation: string,
   iat: number
   exp: number
 }

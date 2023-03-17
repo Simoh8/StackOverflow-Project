@@ -107,24 +107,23 @@ USE Stack;
 
 CREATE TABLE users (
     id VARCHAR(255) PRIMARY KEY,
-    username VARCHAR(255),
-    email VARCHAR(255),
+    username VARCHAR(255) UNIQUE,
+    email VARCHAR(255) UNIQUE,
     password VARCHAR(255),
     reputation DECIMAL(10,2),
     avatarUrl VARCHAR(255),
     bio TEXT,
-    createdAt DATETIME,
-    updatedAt DATETIME
+    createdAt DATETIME DEFAULT GETDATE(),
+    updatedAt DATETIME DEFAULT GETDATE(),
 );
-USE Stack;
-
 
 CREATE TABLE question (
     id VARCHAR(255) PRIMARY KEY,
     title VARCHAR(255),
     content TEXT,
-    createdAt DATETIME,
-    updatedAt DATETIME,
+    tags TEXT,
+    createdAt DATETIME DEFAULT GETDATE(),
+    updatedAt DATETIME DEFAULT GETDATE(),
     author VARCHAR(255),
     FOREIGN KEY (author) REFERENCES users(id) ON DELETE CASCADE
 );
@@ -142,11 +141,12 @@ CREATE TABLE answer (
 );
 USE Stack;
 
+
 CREATE TABLE comment (
     id VARCHAR(255) PRIMARY KEY,
     content TEXT,
-    createdAt DATETIME,
-    updatedAt DATETIME,
+    createdAt DATETIME DEFAULT GETDATE(),
+    updatedAt DATETIME DEFAULT GETDATE(),
     questionId VARCHAR(255),
     answerId VARCHAR(255),
     author VARCHAR(255),

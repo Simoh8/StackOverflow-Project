@@ -1,7 +1,7 @@
 USE Stack
-EXEC getUser @email = 'johndoe@example.com';
 
 EXEC getUser @username = 'johndoe';
+EXEC getUser @email = 'johndoe@example.com';
 
 GO
 CREATE PROCEDURE getUser
