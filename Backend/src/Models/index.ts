@@ -1,20 +1,49 @@
-export class Booking{
-    constructor(public Id:string, public Name:string , 
-        public Email:string, public Destination:string, public TravelDate:Date){}
-}
+// export class Question{
+//     constructor(public id:string, public title:string ,public content:string, public comments:string){}
+// }
 
 
 export class User{
-    constructor(public Id:string, public Name:string , 
-        public Email:string, public Password:string, public Role:string){}
+
+    
+    constructor(public id:string, public name:string ,public role:string, public email:string, public password:string, reputation: string){}
+    
 }
 
 
 export interface DecodedData{
-  Id: string,
-  Name:string,
-  Email:string,
-  Role: string,
+  id: string,
+  name:string,
+  email:string,
+  reputation: string,
   iat: number
   exp: number
+}
+export interface Question{
+
+  id: string;
+  title: string;
+  content: string;
+  author: User;
+  tags: Tag[];
+  upvotes: number;
+  downvotes: number;
+  views: number;
+  createdAt: Date;
+  updatedAt: Date;
+  answers: Answer[];
+  comments: Comment[];
+}
+export interface Tag {
+  id: number;
+  name: string;
+}
+export interface Answer {
+  id: number;
+  userId: number;
+  username: string;
+  content: string;
+  date: Date;
+  upvotes: number;
+  downvotes: number;
 }

@@ -1,0 +1,36 @@
+# all questions 
+GET  http://localhost:4200/all
+
+### question by id 
+
+GET http://localhost:4200/question6
+
+
+
+### adding a question
+POST  http://localhost:4200/question/add
+
+{
+   
+    "title": "How do I use Python for web development?",
+    "content": "I want to create a website using Python.",
+ 
+}
+
+### deleting a question
+POST http://localhost:4200/register
+
+###
+
+POST http://localhost:4200/login
+
+###
+
+GET http://localhost:4200/home
+
+### getting all users
+ GET http://localhost:4200/users/all
+
+### getting single user by ID
+
+GET http://localhost:4200/users/user/user10112

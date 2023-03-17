@@ -16,3 +16,7 @@ flex-direction: column;
     display: flex;
     justify-content: space-between;
 }
+
+input.ng-invalid.ng-touched{
+    border: red 1px solid;
+}

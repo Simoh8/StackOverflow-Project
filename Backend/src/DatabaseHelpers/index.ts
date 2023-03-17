@@ -11,9 +11,8 @@ private pool :Promise<mssql.ConnectionPool>
     createRequest (request:mssql.Request , data:{[x:string]:string}){
         const keys =Object.keys(data)//['name', 'age']
         keys.map(keyName=>{
-            request.input(keyName, data[keyName]) // input(name, jesse) //input(age,10)
-            // first iteration = request().input(name,'jesse')
-            //second iteration request().input(name,'jesse').input(age,10)
+            request.input(keyName, data[keyName]) 
+            // input(name, jesse) //input(age,10)
         })
 
         return request
@@ -22,7 +21,6 @@ private pool :Promise<mssql.ConnectionPool>
    async  exec( storedProcedure:string , data:{[x:string]:string}={}){
         let emptyRequest = await (await this.pool).request()// empty request// await pool.request()
         let request =this.createRequest(emptyRequest,data) //request with inputs 
-        //request().input(name,'jesse').input(age,10)
         let result = await request.execute(storedProcedure)
         return result
     }
