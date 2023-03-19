@@ -4,6 +4,7 @@ EXEC getUser @username = 'johndoe';
 EXEC getUser @email = 'johndoe@example.com';
 
 GO
+-- this gets a single user 
 CREATE PROCEDURE getUser
     @id VARCHAR(255) = NULL,
     @username VARCHAR(255) = NULL,

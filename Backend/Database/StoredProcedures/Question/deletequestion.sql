@@ -1,6 +1,6 @@
 USE Stack
 EXEC deleteQuestion @id = 'question123';
-
+-- this proc is for deleting a question
 GO
 CREATE PROCEDURE deleteQuestion
     @id VARCHAR(255) = NULL,

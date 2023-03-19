@@ -1,36 +1,76 @@
 # all questions 
-GET  http://localhost:4200/all
+GET  http://localhost:4200/questions/all
 
 ### question by id 
 
-GET http://localhost:4200/question6
-
-
+GET http://localhost:4200/448fe62a-a67b-447c-b91c-78c43e579512
 
 ### adding a question
 POST  http://localhost:4200/question/add
+token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJJZCI6IjkzY2RhYTJmLWQ5MDItNDdlOC1hN2Q0LTRiMGI2ZmM0MDQ5NCIsIk5hbWUiOiJoZWxsbyIsIkVtYWlsIjoiaGVsbG9AZ21haWwuY29tIiwiUm9sZSI6InVzZXIiLCJpc1NlbnQiOiIwIiwiaWF0IjoxNjc3NTAzMzU3LCJleHAiOjE2Nzc1MDY5NTd9.wKRBeY3yScs9_iwxvJkv6DvOYBMNjNSNMaDWZcdnuhY
+
+Content-Type: application/json
 
 {
-   
-    "title": "How do I use Python for web development?",
+       "title": "How do I use Python for web development?",
     "content": "I want to create a website using Python.",
- 
+
 }
-
 ### deleting a question
-POST http://localhost:4200/register
-
-###
-
-POST http://localhost:4200/login
-
-###
-
-GET http://localhost:4200/home
+DELETE http://localhost:4200/question/delete/10
 
 ### getting all users
- GET http://localhost:4200/users/all
+GET http://localhost:4200/users/all
+
 
 ### getting single user by ID
+GET http://localhost:4200/users/user/10
 
-GET http://localhost:4200/users/user/user10112
+### adding a user
+POST http://localhost:4200/user/adduser
+
+Content-Type: application/json
+{
+   
+    "username": "user71",
+    "email": "usert1@email.com",
+    "password": "@Venom1999word1"
+
+}
+
+### delete a user
+DELETE http://localhost:4200/user/delete/10
+
+
+### getting all anwers
+GET http://localhost:4200/answers/all
+
+###  getting a single answer
+GET http://localhost:4200/answer/4
+
+### adding a answer
+
+POST http://localhost:4200/answer/addanswer
+
+Content-Type: application/json
+{
+    "content": "I want to create a website using Python"
+}
+
+
+### adding an answer
+POST http://localhost:4200/answer/addanswer
+Content-Type: application/json
+{
+
+    "content": "My ",
+    "questionId": "4",
+    "author": "5"
+  }
+
+### getting all answers
+GET http://localhost:4200/answers/all
+### deleting an answer 
+DELETE http://localhost:4200/answer/delete/4
+
+GET http://localhost:4200/answers/

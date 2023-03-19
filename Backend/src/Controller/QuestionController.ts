@@ -6,10 +6,10 @@ import { DatabaseHelper } from '../DatabaseHelpers'
 import Joi, { string } from 'joi'
 const _db= new DatabaseHelper()
 interface ExtendedRequest extends Request{
-    body:{
+     body:{
       title: string,
       content: string,
-      author: string,
+      author: string ,
       tags: string,
       upvotes: number,
       downvotes: number,
@@ -24,7 +24,7 @@ interface ExtendedRequest extends Request{
     info?:DecodedData
 
     }
-//Get all Details
+//Get all questions
 export const getQuestions:RequestHandler=async (req,res)=>{
   
    try {
@@ -37,7 +37,6 @@ export const getQuestions:RequestHandler=async (req,res)=>{
    }
 
 }
-
 
 
 //Get one question
@@ -64,11 +63,14 @@ try {
 
 }
 
-
-export const getbytitle=async(req:ExtendedRequest,res:Response)=>{
+// get all question by userid 
+export const getbyUser=async(req:ExtendedRequest,res:Response)=>{
   try {
-     if(req.info){
-      const question:Question[]= await (await  _db.exec('getQuestions', {author:req.body.author})).recordset
+    const author= '4'
+    console.log(author);
+
+         if(req.info && author ){
+      const question:Question[]= (await _db.exec('GetQuestionsByUserId', {author})).recordset
       if(!question[0]){
          return res.status(404).json({error:'question Not Found'})
       }
@@ -76,67 +78,72 @@ export const getbytitle=async(req:ExtendedRequest,res:Response)=>{
      return  res.status(200).json(question)
      }
     
-  
-  } catch (error) {
+    } catch (error) {
     res.status(500).json(error)
   }
   
   }
 
 
+  // export async function addQuestion(req: ExtendedRequest, res: Response) {
+  //   try {
+  //     const id = uid();
+  
+  //     const author = req.user?.id ?? 'unknown';
+  //     console.log('the author', author);
+  
+  //     const { error } = AddQuestion.validate(req.body);
+  
+  //     if (error) {
+  //       return res.status(422).json(error.details[0].message);
+  //     }
+  
+  //     if (req.body.title && req.body.content && req.body.tags) {
+  //       _db.exec('insertOrUpdateQuestion', {
+  //         id,
+  //         title: req.body.title,
+  //         content: req.body.content,
+  //         tags: req.body.tags,
+  //         author,
+  //       });
+  
+  //       return res.status(201).json({ message: 'Question Added' });
+  //     }
+  //   } catch (error: any) {
+  //     return res.status(500).json(error.message);
+  //   }
+  // }
+  
 
 
- export async function addQuestion( req:ExtendedRequest, res:Response) {
-  try {
-    const id =uid()
-    const {title,content , tags}= req.body
-    
-    const {error}= AddQuestion.validate(req.body)
 
-    if(error){
-      return res.status(422).json(error.details[0].message)
+
+
+
+  export async function addQuestion(req: ExtendedRequest, res: Response) {
+    try {
+      const id = uid();
+          const { title, content, tags ,author} = req.body;
+      // const author = req.user?.id; // Assuming you have a user object with an id field
+      // console.log( 'the author',author)
+      // console.log(user);
+      
+      const { error } = AddQuestion.validate(req.body);
+  
+      if (error) {
+        return res.status(422).json(error.details[0].message);
+      }
+
+  
+      if (req.body ) {
+        _db.exec('insertOrUpdateQuestion', { id, title, content, tags, author });
+  
+        return res.status(201).json({ message: 'Question Added' });
+      }
+    } catch (error: any) {
+      return res.status(500).json(error.message);
     }
-
-   if(req.body){
-    _db.exec('insertOrUpdateQuestion',{id,title,content,tags})
-
-   return  res.status(201).json({message:'Question Added'})
-   }
-  } 
-  catch (error:any) {
-     return res.status(500).json(error.message)
   }
- }
-
-
-
-
-
-// export async function updateBooking(req:ExtendedRequest,res:Response){
-// try {
-// const {title,content,author,tags,upvotes,downvotes,views,createdAt,updatedAt,answers,comments}= req.body
-//      const question:Question= await (await _db.exec('getFlightBookings',{id:req.params.id})).recordset[0]
-
-//   if(req.info){
-//     if(question){
-//       await _db.exec('InsertOrUpdate', {id:req.params.id,name:req.info.Name, email:req.info.Email, destination:Destination, date:TravelDate})
-//       const updatedQuestion:Q= await (await  _db.exec('getFlightBookings', {id:req.params.id})).recordset[0]
-//       return res.status(200).json(updatedQuestion)
-//     }
-//   }
-
-//   return res.status(404).json({error:'Booking Not Found'}) 
-     
-//   } 
-
-// catch (error:any) {
-//    res.status(500).json(error.message)
-// }
-// }
-
-
-//delete question
-
 
 export const deleteQuestion=async(req:ExtendedRequest, res:Response)=>{
   try {
