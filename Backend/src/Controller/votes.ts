@@ -1,7 +1,7 @@
 import { RequestHandler,Request,Response } from 'express'
 import {v4 as uid} from 'uuid'
 import { AddQuestion, vote } from '../Helpers'
-import {  DecodedData, vote } from '../Models'
+import {  DecodedData, Vote } from '../Models'
 import { DatabaseHelper } from '../DatabaseHelpers'
 import Joi, { string } from 'joi'
 const _db= new DatabaseHelper()
@@ -11,6 +11,7 @@ interface ExtendedRequest extends Request{
     answerId:string
     },
 
+    
     params:{id:string},
     
 
@@ -20,7 +21,7 @@ export const getVotes:RequestHandler=async (req,res)=>{
   
    try {
     const{answerId}=req.body
-      const vote:vote[] = await (await _db.exec('FindVotesByAnswerId' ,{answerId})).recordset
+      const vote = await (await _db.exec('FindVotesByAnswerId' ,{answerId})).recordset
 
      res.status(200).json(vote)
    } catch (error) {

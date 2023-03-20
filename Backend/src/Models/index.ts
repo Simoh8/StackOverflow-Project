@@ -42,7 +42,7 @@ export interface Tag {
   name: string;
   
 }
-export interface vote {
+export interface Vote {
   id:string
 
 }

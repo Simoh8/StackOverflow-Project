@@ -9,10 +9,11 @@ DROP TABLE IF EXISTS question;
 DROP TABLE IF EXISTS users;
 
 -- this is the user table 
-thisthis is the user table 
- is the user table 
-USE Stackthis is the user table 
-;
+-- thisthis is the user table 
+--  is the user table 
+-- USE Stackthis is the user table 
+-- ;
+use Stack
 
 
 CREATE TABLE users (
@@ -23,6 +24,8 @@ CREATE TABLE users (
     reputation DECIMAL(10,2),
     avatarUrl VARCHAR(255),
     bio TEXT,
+    isSent VARCHAR(150) DEFAULT '0',
+    Role VARCHAR(100) DEFAULT 'user',
     createdAt DATETIME DEFAULT GETDATE(),
     updatedAt DATETIME DEFAULT GETDATE(),
 );

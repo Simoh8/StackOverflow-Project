@@ -18,21 +18,20 @@ const mssql_1 = __importDefault(require("mssql"));
 const config_1 = require("../config");
 const sendWelcomeEmail = () => __awaiter(void 0, void 0, void 0, function* () {
     const pool = yield mssql_1.default.connect(config_1.sqlConfig);
-    const users = yield (yield pool.request().
-        query("SELECT * FROM users WHERE isSent ='0'")).recordset;
-    console.log(users);
+    const users = yield (yield pool.request().query("SELECT * FROM users WHERE isSent ='0'")).recordset;
+    // console.log('hello world');
     for (let user of users) {
-        ejs_1.default.renderFile('Templates/registration.ejs', { name: user.name }, (error, html) => __awaiter(void 0, void 0, void 0, function* () {
+        ejs_1.default.renderFile('Templates/registration.ejs', { name: user.username }, (error, html) => __awaiter(void 0, void 0, void 0, function* () {
             const message = {
                 from: process.env.EMAIL,
                 to: user.email,
                 subject: "StackOverflow Registration",
                 html
             };
-            console.log(html);
+            // console.log(html);
             try {
                 yield (0, email_1.default)(message);
-                yield pool.request().query(`UPDATE user SET isSent ='1' WHERE Id ='${user.Id}'`);
+                yield pool.request().query(`UPDATE users SET isSent ='1' WHERE Id ='${user.Id}'`);
             }
             catch (error) {
                 console.log(error);

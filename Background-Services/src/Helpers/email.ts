@@ -17,6 +17,7 @@ let config ={
         user:process.env.EMAIL,
         pass:process.env.PASSWORD
     }
+
 }
 
 const sendMail = async(messageOptions:any)=>{
