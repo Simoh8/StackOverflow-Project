@@ -4,7 +4,8 @@ import { PostQuestionComponent } from '../post-question/post-question.component'
 import { AppModule } from 'src/app/app.module';
 import { TruncatePipe } from 'src/app/Pipes/Truncatepipe';
 import { Route, Router, RouterModule } from '@angular/router';
-// import { TitleCasePipe } from '@angular/common';
+import { HttpClientModule} from '@angular/common/http';
+import {NgxPaginationModule} from 'ngx-pagination';
 import { ClickColorDirective, } from 'src/app/Directives/highlight.directive';
 import { trigger, state, style, transition, animate } from '@angular/animations';
 import { ButtonAnimationDirective } from 'src/app/Directives/button-animation.directive';
@@ -25,7 +26,7 @@ import {   TitleCasePipe } from "../../../Pipes/Titlepipe";
             transition('normal <=> clicked', animate('300ms ease-in'))
         ])
     ],
-    imports: [CommonModule, RouterModule, ClickColorDirective, ButtonAnimationDirective, TruncatePipe, TitleCasePipe]
+    imports: [CommonModule, RouterModule,   HttpClientModule,NgxPaginationModule,ClickColorDirective, ButtonAnimationDirective, TruncatePipe, TitleCasePipe]
 })
 
 export class HomeComponent {
