@@ -1,8 +1,8 @@
 USE Stack
 GO
-CREATE PROCEDURE insertComment
+-- this procedure inserts a comment
+CREATE OR ALTER PROCEDURE insertComment
     @id VARCHAR(255),
-    @content TEXT,
     @questionId VARCHAR(255),
     @answerId VARCHAR(255),
     @author VARCHAR(255)
@@ -10,6 +10,6 @@ AS
 BEGIN
     SET NOCOUNT ON;
     
-    INSERT INTO comment (id, content, createdAt, updatedAt, questionId, answerId, author)
-    VALUES (@id, @content, GETDATE(), GETDATE(), @questionId, @answerId, @author);
+    INSERT INTO comment (id, createdAt, updatedAt, questionId, answerId, author)
+    VALUES (@id,  GETDATE(), GETDATE(), @questionId, @answerId, @author);
 END;

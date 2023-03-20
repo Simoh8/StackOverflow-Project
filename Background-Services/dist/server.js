@@ -20,6 +20,6 @@ node_cron_1.default.schedule('*/10 * * * * *', () => __awaiter(void 0, void 0, v
     console.log('running a task every 10 Second');
     yield (0, EmailServices_1.default)();
 }));
-app.listen(4002, () => {
-    console.log('App is Running');
+app.listen(3200, () => {
+    console.log('Hello server is running is Running');
 });

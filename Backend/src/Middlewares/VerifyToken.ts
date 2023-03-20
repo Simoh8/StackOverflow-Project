@@ -5,7 +5,19 @@ import jwt from 'jsonwebtoken'
 import { DecodedData } from '../Models'
 dotenv.config({ path: path.resolve(__dirname, '../../.env') })
 
+interface User {
+  id: string;
+  email: string;
+}
+declare global {
+    namespace Express {
+      interface Request {
+        user?: User;
+      }
+    }
+  }
 interface ExtendedRequest extends Request{
+
 info?:DecodedData
 }
 

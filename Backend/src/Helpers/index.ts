@@ -3,13 +3,13 @@ import Joi, { ref } from 'joi'
 
 export const 
 RegistrationSchema= Joi.object({
-     name:Joi.string().required(),
+     username:Joi.string().required(),
      email:Joi.string().required().email().messages({
         'string.empty':' Please add an Email',
         'string.email':'Not a Valid Email'
 
     }),
-    Password:Joi.string().required().pattern(new
+    password:Joi.string().required().pattern(new
          RegExp('^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*]).{8,}$')),
 
 })
@@ -30,11 +30,11 @@ export const AddQuestion= Joi.object({
    
    content:Joi.string().required(),
    tags:Joi.string().required(),
- 
-
-
-   
-
-
-
 })
+
+export const AnswerSchema=Joi.object({
+    content:Joi.string().required(),
+    questionId:Joi.string().required(),
+    author:Joi.string().required()
+})
+export const vote= Joi.object({});

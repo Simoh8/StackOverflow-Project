@@ -2,7 +2,7 @@ USE Stack
 -- EXEC getSinglequestionQuestion  @title = 'What is the difference between Python 2 and Python 3?';
 
 -- SELECT * FROM question
-
+-- get question by single id
 GO
 CREATE OR ALTER PROCEDURE getSinglequestionQuestion
     @id VARCHAR(255) = NULL,

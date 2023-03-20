@@ -1,5 +1,6 @@
 USE Stack
 GO
+-- the proc deletes a vote 
 CREATE PROCEDURE deleteVoteByReference
     @questionId VARCHAR(255) = NULL,
     @answerId VARCHAR(255) = NULL,

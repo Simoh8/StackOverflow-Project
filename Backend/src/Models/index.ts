@@ -3,10 +3,13 @@
 // }
 
 
-export class User{
-
+export interface User{
     
-    constructor(public id:string, public name:string ,public role:string, public email:string, public password:string, reputation: string){}
+  id:string , 
+   name:string , 
+    email:string,
+      password:string,
+       reputation: string
     
 }
 
@@ -37,13 +40,16 @@ export interface Question{
 export interface Tag {
   id: number;
   name: string;
+  
+}
+export interface Vote {
+  id:string
+
 }
 export interface Answer {
   id: number;
-  userId: number;
-  username: string;
+  userId: string;
   content: string;
+  questionId: number;
   date: Date;
-  upvotes: number;
-  downvotes: number;
 }

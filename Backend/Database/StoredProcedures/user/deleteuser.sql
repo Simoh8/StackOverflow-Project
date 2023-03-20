@@ -4,7 +4,7 @@ EXEC deletingUser @username ='johhndoe';
 
 
 GO
-
+-- the proc deletes a user using the id 
 CREATE PROCEDURE deletingUser
     @id VARCHAR(255) = NULL,
     @username VARCHAR(255) = NULL

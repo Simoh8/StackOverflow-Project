@@ -1,4 +1,5 @@
 USE Stack
+-- this proc gets all the questions in app
 EXEC getAllQuestions
 GO
 CREATE PROCEDURE getAllQuestions
