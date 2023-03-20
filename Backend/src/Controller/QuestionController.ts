@@ -6,6 +6,8 @@ import { Question, DecodedData, User, Answer, Tag } from '../Models'
 import { DatabaseHelper } from '../DatabaseHelpers'
 import Joi, { string } from 'joi'
 const _db= new DatabaseHelper()
+
+
 interface ExtendedRequest extends Request{
      body:{
       title: string,
