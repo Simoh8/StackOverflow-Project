@@ -14,50 +14,57 @@
 -- USE Stack
 -- EXEC delete_answer '1'
 
--- Use Stack 
--- INSERT INTO question (id, title, content, createdAt, updatedAt, author)
--- VALUES ('question1', 'How do I use Python?', 'I am new to Python and I need some help getting started.', '2023-03-16 10:00:00', '2023-03-16 10:00:00', 'user663');
 
--- INSERT INTO question (id, title, content, createdAt, updatedAt, author)
--- VALUES ('question2', 'What is the difference between Python 2 and Python 3?', 'I am confused about the two versions and which one I should use.', '2023-03-16 11:00:00', '2023-03-16 11:00:00', 'user56');
+USE Stack 
+EXEC getUserByEmail 'oumaj202@gmail.com';
 
--- INSERT INTO question (id, title, content, createdAt, updatedAt, author)
--- VALUES ('question3', 'How do I install Python on my Windows computer?', 'I have Windows 10 and I want to install Python.', '2023-03-16 12:00:00', '2023-03-16 12:00:00', 'user79');
+select * FROM users
 
--- INSERT INTO question (id, title, content, createdAt, updatedAt, author)
--- VALUES ('question4', 'What are the best Python libraries for data analysis?', 'I am interested in data analysis and want to know which Python libraries are best.', '2023-03-16 13:00:00', '2023-03-16 13:00:00', 'user10112');
 
--- INSERT INTO question (id, title, content, createdAt, updatedAt, author)
--- VALUES ('question5', 'How do I create a Python virtual environment?', 'I want to create a virtual environment to test my Python projects.', '2023-03-16 14:00:00', '2023-03-16 14:00:00', 'user1315');
+Use Stack 
+INSERT INTO question (id, title, content, createdAt, updatedAt, author)
+VALUES ('question1', 'How do I use Python?', 'I am new to Python and I need some help getting started.', '2023-03-16 10:00:00', '2023-03-16 10:00:00', 'user663');
 
--- INSERT INTO question (id, title, content, createdAt, updatedAt, author)
--- VALUES ('question6', 'How do I use Python for web development?', 'I want to create a website using Python.', '2023-03-16 15:00:00', '2023-03-16 15:00:00', 'user1718');
+INSERT INTO question (id, title, content, createdAt, updatedAt, author)
+VALUES ('question2', 'What is the difference between Python 2 and Python 3?', 'I am confused about the two versions and which one I should use.', '2023-03-16 11:00:00', '2023-03-16 11:00:00', 'user56');
 
--- INSERT INTO question (id, title, content, createdAt, updatedAt, author)
--- VALUES ('question7', 'How do I debug Python code?', 'I am having trouble with my Python code and I need to debug it.', '2023-03-16 16:00:00', '2023-03-16 16:00:00', 'user1021');
+INSERT INTO question (id, title, content, createdAt, updatedAt, author)
+VALUES ('question3', 'How do I install Python on my Windows computer?', 'I have Windows 10 and I want to install Python.', '2023-03-16 12:00:00', '2023-03-16 12:00:00', 'user79');
 
--- INSERT INTO question (id, title, content, createdAt, updatedAt, author)
--- VALUES ('question8', 'What are the best Python frameworks for web development?', 'I want to create a website using Python and I am interested in the best frameworks.', '2023-03-16 17:00:00', '2023-03-16 17:00:00', 'user2324');
+INSERT INTO question (id, title, content, createdAt, updatedAt, author)
+VALUES ('question4', 'What are the best Python libraries for data analysis?', 'I am interested in data analysis and want to know which Python libraries are best.', '2023-03-16 13:00:00', '2023-03-16 13:00:00', 'user10112');
 
--- INSERT INTO question (id, title, content, createdAt, updatedAt, author)
--- VALUES ('question9', 'How do I use Python for machine learning?', 'I want to learn machine learning using Python.', '2023-03-16 18:00:00', '2023-03-16 18:00:00', 'user2627');
+INSERT INTO question (id, title, content, createdAt, updatedAt, author)
+VALUES ('question5', 'How do I create a Python virtual environment?', 'I want to create a virtual environment to test my Python projects.', '2023-03-16 14:00:00', '2023-03-16 14:00:00', 'user1315');
+
+INSERT INTO question (id, title, content, createdAt, updatedAt, author)
+VALUES ('question6', 'How do I use Python for web development?', 'I want to create a website using Python.', '2023-03-16 15:00:00', '2023-03-16 15:00:00', 'user1718');
+
+INSERT INTO question (id, title, content, createdAt, updatedAt, author)
+VALUES ('question7', 'How do I debug Python code?', 'I am having trouble with my Python code and I need to debug it.', '2023-03-16 16:00:00', '2023-03-16 16:00:00', 'user1021');
+
+INSERT INTO question (id, title, content, createdAt, updatedAt, author)
+VALUES ('question8', 'What are the best Python frameworks for web development?', 'I want to create a website using Python and I am interested in the best frameworks.', '2023-03-16 17:00:00', '2023-03-16 17:00:00', 'user2324');
+
+INSERT INTO question (id, title, content, createdAt, updatedAt, author)
+VALUES ('question9', 'How do I use Python for machine learning?', 'I want to learn machine learning using Python.', '2023-03-16 18:00:00', '2023-03-16 18:00:00', 'user2627');
 
 -- SELECT * FROM USERS
 
 
--- Use Stack 
--- INSERT INTO users (id, username, email, password, reputation, avatarUrl, bio)
--- VALUES
--- ('1', 'user1', 'user1@email.com', 'password1', 100.00, 'http://example.com/avatar1.jpg', 'Bio for user1'),
--- ('2', 'user2', 'user2@email.com', 'password2', 95.00, 'http://example.com/avatar2.jpg', 'Bio for user2'),
--- ('3', 'user3', 'user3@email.com', 'password3', 87.50, 'http://example.com/avatar3.jpg', 'Bio for user3'),
--- ('4', 'user4', 'user4@email.com', 'password4', 76.25, 'http://example.com/avatar4.jpg', 'Bio for user4'),
--- ('5', 'user5', 'user5@email.com', 'password5', 65.50, 'http://example.com/avatar5.jpg', 'Bio for user5'),
--- ('6', 'user6', 'user6@email.com', 'password6', 50.00, 'http://example.com/avatar6.jpg', 'Bio for user6'),
--- ('7', 'user7', 'user7@email.com', 'password7', 38.75, 'http://example.com/avatar7.jpg', 'Bio for user7'),
--- ('8', 'user8', 'user8@email.com', 'password8', 27.50, 'http://example.com/avatar8.jpg', 'Bio for user8'),
--- ('9', 'user9', 'user9@email.com', 'password9', 15.00, 'http://example.com/avatar9.jpg', 'Bio for user9'),
--- ('10', 'user10', 'user10@email.com', 'password10', 5.00, 'http://example.com/avatar10.jpg', 'Bio for user10');
+Use Stack 
+INSERT INTO users (id, username, email, password, reputation, avatarUrl, bio)
+VALUES
+('1', 'user1', 'user1@email.com', 'password1', 100.00, 'http://example.com/avatar1.jpg', 'Bio for user1'),
+('2', 'user2', 'user2@email.com', 'password2', 95.00, 'http://example.com/avatar2.jpg', 'Bio for user2'),
+('3', 'user3', 'user3@email.com', 'password3', 87.50, 'http://example.com/avatar3.jpg', 'Bio for user3'),
+('4', 'user4', 'user4@email.com', 'password4', 76.25, 'http://example.com/avatar4.jpg', 'Bio for user4'),
+('5', 'user5', 'user5@email.com', 'password5', 65.50, 'http://example.com/avatar5.jpg', 'Bio for user5'),
+('6', 'user6', 'user6@email.com', 'password6', 50.00, 'http://example.com/avatar6.jpg', 'Bio for user6'),
+('7', 'user7', 'user7@email.com', 'password7', 38.75, 'http://example.com/avatar7.jpg', 'Bio for user7'),
+('8', 'user8', 'user8@email.com', 'password8', 27.50, 'http://example.com/avatar8.jpg', 'Bio for user8'),
+('9', 'user9', 'user9@email.com', 'password9', 15.00, 'http://example.com/avatar9.jpg', 'Bio for user9'),
+('10', 'user10', 'user10@email.com', 'password10', 5.00, 'http://example.com/avatar10.jpg', 'Bio for user10');
 
 -- USE Stack;
 
@@ -75,7 +82,19 @@
 -- ('10', 'user10', 'user10@email.com', 'password10', 5.00, 'http://example.com/avatar10.jpg', 'Bio for user10');
 
 
--- Use Stack 
+Use Stack 
+
+DELETE * from users
+EXECUTE insertOrUpdateQuestion '1', 'Question 1', 'Content for question 1', 'tag1, tag2', 'John Doe';
+EXECUTE insertOrUpdateQuestion '2', 'Question 2', 'Content for question 2', 'tag2, tag3', 'Jane Smith';
+EXECUTE insertOrUpdateQuestion '3', 'Question 3', 'Content for question 3', 'tag3, tag4', 'Bob Johnson';
+EXECUTE insertOrUpdateQuestion '4', 'Question 4', 'Content for question 4', 'tag4, tag5', 'Sara Lee';
+EXECUTE insertOrUpdateQuestion '5', 'Question 5', 'Content for question 5', 'tag5, tag6', 'Tom Jones';
+EXECUTE insertOrUpdateQuestion '6', 'Question 6', 'Content for question 6', 'tag6, tag7', 'Amy Wang';
+EXECUTE insertOrUpdateQuestion '7', 'Question 7', 'Content for question 7', 'tag7, tag8', 'Mike Chen';
+EXECUTE insertOrUpdateQuestion '8', 'Question 8', 'Content for question 8', 'tag8, tag9', 'Emily Li';
+EXECUTE insertOrUpdateQuestion '9', 'Question 9', 'Content for question 9', 'tag9, tag10', 'David Kim';
+
 -- INSERT INTO vote (id, value, questionId, answerId, author)
 -- VALUES
 -- (1, 1, '1', '1', '1'),

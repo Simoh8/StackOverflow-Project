@@ -6,9 +6,10 @@
 export interface User{
     
   id:string , 
-   name:string , 
+   username:string , 
     email:string,
       password:string,
+      role:string,
        reputation: string
     
 }
@@ -44,6 +45,8 @@ export interface Tag {
 }
 export interface Vote {
   id:string
+  
+  value:number
 
 }
 export interface Answer {

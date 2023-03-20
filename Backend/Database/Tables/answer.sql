@@ -1,5 +1,5 @@
 -- this is the answer table with questionid an d userid as the FOREIGN keys
-
+USE Stack
 CREATE TABLE answer (
     id VARCHAR(255) PRIMARY KEY,
     content TEXT,

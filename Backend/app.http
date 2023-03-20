@@ -30,6 +30,7 @@ GET http://localhost:4200/users/user/10
 POST http://localhost:4200/user/adduser
 
 Content-Type: application/json
+
 {
    
     "username": "user71",
@@ -39,6 +40,7 @@ Content-Type: application/json
 }
 
 ### delete a user
+
 DELETE http://localhost:4200/user/delete/10
 
 
@@ -66,6 +68,7 @@ Content-Type: application/json
     "content": "My ",
     "questionId": "4",
     "author": "5"
+    
   }
 
 ### getting all answers

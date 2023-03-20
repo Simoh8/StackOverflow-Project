@@ -1,4 +1,5 @@
 -- the question table with the userid as the foreign key
+USE Stack
 CREATE TABLE question (
     id VARCHAR(255) PRIMARY KEY,
     title VARCHAR(255),

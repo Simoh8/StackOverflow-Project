@@ -12,7 +12,7 @@ export const sqlConfig = {
     max: 10,
     min: 0,
     idleTimeoutMillis: 3000
-  },
+      },
   options: {
     encrypt: false, // for azure
     trustServerCertificate: true // change to true for local dev / self-signed certs

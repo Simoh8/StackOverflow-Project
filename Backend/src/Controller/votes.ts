@@ -3,10 +3,11 @@ import {v4 as uid} from 'uuid'
 import { AddQuestion, vote } from '../Helpers'
 import {  DecodedData, Vote } from '../Models'
 import { DatabaseHelper } from '../DatabaseHelpers'
-import Joi, { string } from 'joi'
+import Joi, { number, string } from 'joi'
 const _db= new DatabaseHelper()
 interface ExtendedRequest extends Request{
      body:{
+    value:Number
     author:string
     answerId:string
     },
@@ -54,6 +55,7 @@ export const getVotes:RequestHandler=async (req,res)=>{
 export const deleteVote=async(req:ExtendedRequest, res:Response)=>{
   try {
     const question= await (
+
     await _db.exec('FindVotesByAnswerId',{id:req.params.id})
   ).recordset[0]
     if(question){
