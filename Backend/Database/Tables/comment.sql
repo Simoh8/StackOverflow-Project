@@ -1,4 +1,5 @@
 -- the comment table with questionId,answerId and userid as the foreign keys 
+USE Stack
 CREATE TABLE comment (
     id VARCHAR(255) PRIMARY KEY,
     content TEXT,

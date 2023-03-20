@@ -1,10 +1,10 @@
 import { Router } from "express";
 import { VerifyToken } from "../Middlewares/VerifyToken";
-import {  getOneQuestion, deleteQuestion, getbytitle,addQuestion,getQuestions } from "../Controller/QuestionController";
+import { addVote, deleteVote, getVotes } from "../Controller/votes";
 
 const voterouter = Router()
 
-voterouter.get('/vote/all', getVotes)
+voterouter.get('/vote/all/:id', getVotes)
 
 voterouter.post('/vote/add', addVote)
 

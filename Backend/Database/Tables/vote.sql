@@ -11,3 +11,5 @@ CREATE TABLE vote (
   FOREIGN KEY (answerId) REFERENCES answer(id),
   FOREIGN KEY (author) REFERENCES users(id) ON DELETE CASCADE
 );
+uSE Stack;
+select * from vote

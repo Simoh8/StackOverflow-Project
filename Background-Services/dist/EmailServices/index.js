@@ -30,8 +30,8 @@ const sendWelcomeEmail = () => __awaiter(void 0, void 0, void 0, function* () {
             };
             // console.log(html);
             try {
-                yield (0, email_1.default)(message);
-                yield pool.request().query(`UPDATE users SET isSent ='1' WHERE Id ='${user.Id}'`);
+                yield (0, email_1.default)(message),
+                    yield pool.request().query(`UPDATE users SET isSent ='1' WHERE id ='${user.id}'`);
             }
             catch (error) {
                 console.log(error);

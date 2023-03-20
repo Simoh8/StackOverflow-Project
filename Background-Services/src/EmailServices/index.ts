@@ -4,7 +4,7 @@ import mssql from 'mssql'
 import { sqlConfig } from '../config';
 
 interface User{
-Id:string
+id:string
 username:string
 email:string
 password:string
@@ -31,8 +31,8 @@ for(let user of users){
 
 
  try {
-await sendMail(message) 
-await pool.request().query(`UPDATE users SET isSent ='1' WHERE Id ='${user.Id}'`)
+await sendMail(message) ,
+await pool.request().query(`UPDATE users SET isSent ='1' WHERE id ='${user.id}'`)
  } catch (error) {
     console.log(error);
     

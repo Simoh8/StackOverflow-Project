@@ -1,7 +1,7 @@
 USE Stack
 
 EXEC getUser @username = 'johndoe';
-EXEC getUser @email = 'johndoe@example.com';
+EXEC getUser @email = '.com';
 
 GO
 -- this gets a single user 
@@ -20,3 +20,11 @@ BEGIN
     ELSE IF @email IS NOT NULL
         SELECT * FROM users WHERE email = @email;
 END;
+USE Stack
+GO
+CREATE PROCEDURE getUserByEmail
+  @email VARCHAR(255)
+AS
+BEGIN
+  SELECT * FROM users WHERE email = @email;
+END
