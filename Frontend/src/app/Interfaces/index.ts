@@ -3,7 +3,6 @@ export  interface User {
     username: string;
     email: string;
     password: string;
-    reputation: number;
     avatarUrl: string;
     bio: string;
     createdAt: Date;
@@ -12,7 +11,6 @@ export  interface User {
     answers: Answer[];
     comments: Comment[];
     notifications: Notification[];
-    
     register(): void;
     login(): void;
     updateProfile(): void;
@@ -36,7 +34,8 @@ export  interface User {
     ask(): void;
     view(questionId: string): void;
     search(query: string): void;
-    answer(questionId: string, answerContent: string): void;
+    answer(questionId: string, 
+      answerContent: string): void;
   }
 
   export interface Answer {
