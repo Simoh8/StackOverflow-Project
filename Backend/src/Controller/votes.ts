@@ -1,6 +1,6 @@
 import { RequestHandler,Request,Response } from 'express'
 import {v4 as uid} from 'uuid'
-import { <<<AddQuestion, vote } from '../Helpers'
+import { AddQuestion, vote } from '../Helpers'
 import {  DecodedData, Vote } from '../Models'
 import { DatabaseHelper } from '../DatabaseHelpers'
 import Joi, { number, string } from 'joi'
@@ -23,14 +23,12 @@ export const getVotes:RequestHandler=async (req,res)=>{
    try {
     const{answerId}=req.body
       const vote = await (await _db.exec('FindVotesByAnswerId' ,{answerId})).recordset
-
      res.status(200).json(vote)
    } catch (error) {
     res.status(500).json(error)
    }
 
 }
-
   export async function addVote(req: ExtendedRequest, res: Response) {
     try {
       const id = uid();
