@@ -1,35 +1,61 @@
-import { createReducer, on } from '@ngrx/store';
-import { User } from 'src/app/Interfaces';
-import * as UserActions from '../Actions/userActions';
+import { createFeatureSelector, createReducer, createSelector, on } from "@ngrx/store";
+import { LoginSuccess } from "src/app/Interfaces";
+import * as UserActions from '../Actions/userActions'
 
-export interface UserState {
-  user: User | null;
-  isLoading: boolean;
-  error: string | null;
+export interface UserInterface{
+    userData:LoginSuccess|null
+    errorMessage:string
+    registerSuccessMessage:string
+    registerFailureMessage:string
 }
 
-export const initialUserState: UserState = {
-  user: null,
-  isLoading: false,
-  error: null
-};
 
-export const userReducer = createReducer(
-  initialUserState,
-  on(UserActions.loadUser, (state) => ({
-    ...state,
-    isLoading: true,
-    error: null
-  })),
-  on(UserActions.setUser, (state, { user }) => ({
-    ...state,
-    user,
-    isLoading: false,
-    error: null
-  })),
-  on(UserActions.loadUserError, (state, { error }) => ({
-    ...state,
-    isLoading: false,
-    error: error.message
-  }))
-);
+const initialState:UserInterface={
+    userData:null,
+    errorMessage:'',
+    registerSuccessMessage:'',
+    registerFailureMessage:''
+
+}
+
+
+
+
+const userSlice=createFeatureSelector<UserInterface>('user')
+
+export const nameSelector= createSelector(userSlice, state=>state.userData?.name)
+
+export const userReducer= createReducer<UserInterface>(
+    initialState,
+
+    on(UserActions.loginSuccess, (state,actions):UserInterface=>{
+        return{
+            ...state,
+            errorMessage:'',
+            userData:actions.res
+        }
+    }),
+    on(UserActions.loginFailure, (state,actions):UserInterface=>{
+        return{
+            ...state,
+            errorMessage:actions.errorMessage,
+            userData:null
+        }
+    }),
+    // REGISTER
+    on(UserActions.registerSuccess, (state,actions):UserInterface=>{
+        return{
+            ...state,
+            registerSuccessMessage: actions.res.message,
+            registerFailureMessage:''
+            
+        }
+    }),
+    on(UserActions.registerFailure, (state,actions):UserInterface=>{
+        return{
+            ...state,
+            registerFailureMessage: actions.errorMessage,
+            registerSuccessMessage:''
+        }
+    })
+)
