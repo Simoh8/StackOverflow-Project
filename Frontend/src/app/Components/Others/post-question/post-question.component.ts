@@ -8,5 +8,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./post-question.component.css']
 })
 export class PostQuestionComponent {
+  constructor(){}
 
 }
