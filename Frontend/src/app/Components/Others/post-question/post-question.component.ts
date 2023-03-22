@@ -11,6 +11,7 @@ import { QuestionService } from 'src/app/Services/question.service';
   styleUrls: ['./post-question.component.css'],
   imports: [CommonModule, FormsModule,ReactiveFormsModule]
 })
+
 export class PostQuestionComponent implements OnInit{
   questionform!: FormGroup;
 constructor(public questionService: QuestionService , private formbuilder: FormBuilder ,private route: Router) {
