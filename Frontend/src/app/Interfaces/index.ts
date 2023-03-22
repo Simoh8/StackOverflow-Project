@@ -78,13 +78,13 @@ export  interface User {
     message:string
     token:string
     role:string
-    name:string
+    username:string
 }
 export interface Message{
     message:string
 }
 
 export interface LoginUser{
-    Email:string
-    Password:string
+    email:string
+    password:string
 }

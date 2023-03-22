@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -5,15 +6,23 @@ import { Injectable } from '@angular/core';
 })
 export class AuthService {
 
-  constructor() { }
+  constructor( private http:HttpClient) { }
   
   isLoggedIn=false
   private role=''
-  private name=''
+  private username=''
+
+getAllUsers(){
+return this.http.get('http://localhost:4500/users/all')
+
+}
+getByid(id:string){
+  return this.http.get('http://localhost:4500/user/')
+}
 
 
   getName(){
-  return this.name
+  return this.username
   }
 
 getRole(){
@@ -23,8 +32,8 @@ getRole(){
     setRole(role:string){
       this.role=role
     }
-    setName(name:string){
-      this.name=name
+    setName(username:string){
+      this.username=username
     }
 
 

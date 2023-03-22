@@ -8,8 +8,6 @@ import * as LoginActions from '../Actions/userActions'
 @Injectable()
 export class UserEffects{
     constructor(private authService:AuthenticationService, private action:Actions ,private auth:AuthService){}
-
-
     login= createEffect(()=>{
         return this.action.pipe(
             ofType(LoginActions.login),
@@ -17,7 +15,7 @@ export class UserEffects{
                 return this.authService.loginUser(action.user).pipe(
                  map(res=>{ 
                     this.auth.setRole(res.role)
-                    this.auth.setName(res.name)
+                    this.auth.setName(res.username)
                     this.auth.login()
                     localStorage.setItem('token', res.token)
                     return LoginActions.loginSuccess({res})}),
