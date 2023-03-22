@@ -7,6 +7,7 @@ import { ClickColorDirective } from './Directives/highlight.directive';
   styleUrls: ['./app.component.css'],
 
 })
+
 export class AppComponent {
   title = 'StackOverflow';
 }

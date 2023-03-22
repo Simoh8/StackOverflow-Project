@@ -19,7 +19,7 @@ export interface DecodedData{
   id: string,
   name:string,
   email:string,
-  reputation: string,
+ password:string,
   iat: number
   exp: number
 }

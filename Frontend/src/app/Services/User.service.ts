@@ -11,8 +11,8 @@ export class UserService {
 
   constructor(private http: HttpClient) { }
 
-  getUser(userId: number): Observable<User> {
-    const url = `${this.baseUrl}/${userId}`;
+  getUser(id: number): Observable<User> {
+    const url = `${this.baseUrl}/${id}`;
     return this.http.get<User>(url);
   }
 
@@ -21,9 +21,9 @@ export class UserService {
     return this.http.put<User>(url, user);
   }
 
-  login(username: string, password: string): Observable<boolean> {
-    // Handle login logic and return an Observable with the result
-  }
+  // login(username: string, password: string): Observable<boolean> {
+  //   // Handle login logic and return an Observable with the result
+  // }
 
   logout(): void {
     // Handle logout logic

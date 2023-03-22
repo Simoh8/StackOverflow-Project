@@ -11,10 +11,7 @@ interface ExtendedRequest extends Request{
     questionId:string ,
     userId:string
      },
-
-     
-
-    params:{id:string},
+   params:{id:string},
     info?:DecodedData
 
     }

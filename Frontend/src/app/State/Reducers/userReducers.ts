@@ -2,60 +2,57 @@ import { createFeatureSelector, createReducer, createSelector, on } from "@ngrx/
 import { LoginSuccess } from "src/app/Interfaces";
 import * as UserActions from '../Actions/userActions'
 
-export interface UserInterface{
-    userData:LoginSuccess|null
-    errorMessage:string
-    registerSuccessMessage:string
-    registerFailureMessage:string
+export interface UserInterface {
+    userData: LoginSuccess | null
+    errorMessage: string
+    registerSuccessMessage: string
+    registerFailureMessage: string
 }
 
 
-const initialState:UserInterface={
-    userData:null,
-    errorMessage:'',
-    registerSuccessMessage:'',
-    registerFailureMessage:''
+const initialState: UserInterface = {
+    userData: null,
+    errorMessage: '',
+    registerSuccessMessage: '',
+    registerFailureMessage: ''
 
 }
 
+const userSlice = createFeatureSelector<UserInterface>('user')
 
+export const nameSelector = createSelector(userSlice, state => state.userData?.username)
 
-
-const userSlice=createFeatureSelector<UserInterface>('user')
-
-export const nameSelector= createSelector(userSlice, state=>state.userData?.name)
-
-export const userReducer= createReducer<UserInterface>(
+export const userReducer = createReducer<UserInterface>(
     initialState,
 
-    on(UserActions.loginSuccess, (state,actions):UserInterface=>{
-        return{
+    on(UserActions.loginSuccess, (state, actions): UserInterface => {
+        return {
             ...state,
-            errorMessage:'',
-            userData:actions.res
+            errorMessage: '',
+            userData: actions.res
         }
     }),
-    on(UserActions.loginFailure, (state,actions):UserInterface=>{
-        return{
+    on(UserActions.loginFailure, (state, actions): UserInterface => {
+        return {
             ...state,
-            errorMessage:actions.errorMessage,
-            userData:null
+            errorMessage: actions.errorMessage,
+            userData: null
         }
     }),
     // REGISTER
-    on(UserActions.registerSuccess, (state,actions):UserInterface=>{
-        return{
+    on(UserActions.registerSuccess, (state, actions): UserInterface => {
+        return {
             ...state,
             registerSuccessMessage: actions.res.message,
-            registerFailureMessage:''
-            
+            registerFailureMessage: ''
+
         }
     }),
-    on(UserActions.registerFailure, (state,actions):UserInterface=>{
-        return{
+    on(UserActions.registerFailure, (state, actions): UserInterface => {
+        return {
             ...state,
             registerFailureMessage: actions.errorMessage,
-            registerSuccessMessage:''
+            registerSuccessMessage: ''
         }
     })
 )

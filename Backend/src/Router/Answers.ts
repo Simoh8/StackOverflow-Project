@@ -1,6 +1,4 @@
 import { Router } from "express";
-import { VerifyToken } from "../Middlewares/VerifyToken";
-import { addUser, deleteUser, getAllUser, getOneUser } from "../Controller/UserController";
 import { addAnswer, deleteAnswer, getAllAnwers, getOneAnswer } from "../Controller/AnswerController";
 
 const answerrouter = Router()

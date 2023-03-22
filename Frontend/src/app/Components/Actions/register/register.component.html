@@ -33,17 +33,18 @@
     
     <form [formGroup]="registrationform" (ngSubmit)="register()">
         <label for="name" >Display name </label>
-        <input type="text" name="" id="" placeholder="Enter Your Name " formControlName="name">
+        <input type="text" name="" id="" placeholder="Enter Your Name " formControlName="username">
        <small style="color: red;" *ngIf="!registrationform.get('name')?.valid&& registrationform.get('name')?.touched">Please enter a name </small>
         <label for="email">Email</label>
         <input type="email" name="" id="" placeholder="Enter Your Email" formControlName="email">
         <small style="color: red;" *ngIf="!registrationform.get('email')?.valid&& registrationform.get('email')?.touched">Please enter a valid email </small>
 
         <label for="password"> Password</label>
-        <input type="text"  placeholder="Enter Your Password" name="" id="" formControlName="password">
-        <small style="color: red;" *ngIf="!registrationform.get('password')?.valid&& registrationform.get('password')?.touched">Please enter a name </small>
+        <input type="password"  placeholder="Enter Your Password" name="" id="" formControlName="password">
+        <small style="color: red;" *ngIf="!registrationform.get('password')?.valid&& registrationform.get('password')?.touched">Please enter a password </small>
 
-        <button routerLink="/login">Sign up</button>
+        <button type="submit" >Sign up</button>
+        
     </form>
      <div class="reg">
         <div class="single">
