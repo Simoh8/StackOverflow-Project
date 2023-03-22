@@ -15,20 +15,24 @@ import { StoreModule } from '@ngrx/store';
 import { UserEffects } from './State/Effects/user';
 import { userReducer } from './State/Reducers/userReducers';
 import { TokenInterceptorService } from './Services/token-interceptor.service';
-import { ToastrModule, ToastrService } from 'ngx-toastr';
+import { ToastrModule,ToastrService } from 'ngx-toastr';
 
 
 
 @NgModule({
   declarations: [
-    AppComponent        
+    AppComponent      
+      
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     TitleCasePipe,
-    ToastrModule.forRoot({positionClass :'toast-bottom-right'}),
-    ReactiveFormsModule, 
+    ToastrModule.forRoot({
+      positionClass: 'toast-top-right',
+   
+  }),
+      ReactiveFormsModule, 
     ReactiveFormsModule,
     HttpClientModule,
     ClickColorDirective,

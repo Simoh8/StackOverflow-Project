@@ -12,13 +12,13 @@ export class AuthService {
   private role=''
   private username=''
 
-getAllUsers(){
-return this.http.get('http://localhost:4500/users/all')
+// getAllUsers(){
+// return this.http.get('http://localhost:4500/users/all')
 
-}
-getByid(id:string){
-  return this.http.get('http://localhost:4500/user/')
-}
+// }
+// getByid(id:string){
+//   return this.http.get('http://localhost:4500/user/')
+// }
 
 
   getName(){

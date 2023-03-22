@@ -7,9 +7,8 @@ import { AppState } from 'src/app/State/app.state';
 import { Store } from '@ngrx/store';
 import { AuthService } from 'src/app/Services/auth.service';
 import { login } from 'src/app/State/Actions/userActions';
-import { ToastrService } from 'ngx-toastr';
 import { AuthenticationService } from 'src/app/Services/authentication.service';
-
+import { ToastrService } from 'ngx-toastr';
 
 
 @Component({
@@ -17,31 +16,29 @@ import { AuthenticationService } from 'src/app/Services/authentication.service';
   templateUrl: './login.component.html',
   standalone: true,
   styleUrls: ['./login.component.css'],
-  imports: [CommonModule, ReactiveFormsModule, RouterModule ]
+  imports: [CommonModule, ReactiveFormsModule, RouterModule]
 })
 export class LoginComponent implements OnInit {
-  myForm: FormGroup;
+  myForm!: FormGroup;
   error = null
-  constructor(private formBuilder: FormBuilder,private toast:ToastrService, private router: Router,private authentication: AuthenticationService,private auth: AuthService, private store: Store<AppState>) {
-    this.myForm = this.formBuilder.group({
-  password: new FormControl(null,Validators.required),
-      email:new FormControl(null,[Validators.required,Validators.email])
-    });
-
+  constructor(private formBuilder: FormBuilder, private toast:ToastrService, private router: Router, private authentication: AuthenticationService, private auth: AuthService, private store: Store<AppState>) {
   }
 
   ngOnInit(): void {
-   this.store.dispatch(login({user:this.myForm.value}))
-   this.router.navigate(['/login'])
-   this.toast.success('Login success')
-   
+      this.myForm = this.formBuilder.group({
+        email: new FormControl(null, [Validators.required, Validators.email]),
+        password: new FormControl(null, Validators.required)
+    });
+
   }
-  login() { 
- 
+  login() {
+    this.store.dispatch(login({ user: this.myForm.value }))
+    this.toast.success('Login success')
+    this.router.navigate([''])
   }
 
-  Close(){
-    this.error=null
-}
+  Close() {
+    this.error = null
+  }
 }
 

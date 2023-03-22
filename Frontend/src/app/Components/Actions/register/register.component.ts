@@ -1,12 +1,11 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { AppState } from 'src/app/State/app.state';
 import { register } from 'src/app/State/Actions/userActions';
 import { Store } from '@ngrx/store';
 import { AuthenticationService } from 'src/app/Services/authentication.service';
-import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 
 @Component({
@@ -19,8 +18,8 @@ import { ToastrService } from 'ngx-toastr';
 export class RegisterComponent implements OnInit {
 
   registrationform!: FormGroup
-  constructor(private formBuilder: FormBuilder,private authService: AuthenticationService,private toast: ToastrService,private router:Router,private store:Store, private auth: AuthenticationService) {
-    
+  constructor(private formBuilder: FormBuilder,private toast:ToastrService, private authService: AuthenticationService, private router: Router, private store: Store, private auth: AuthenticationService) {
+
 
   }
 
@@ -35,9 +34,18 @@ export class RegisterComponent implements OnInit {
 
   }
   register() {
-    this.store.dispatch(register({user:this.registrationform.value}))
-    this.router.navigate(['register'])
-    this.toast.success('User successfully registered')
+    if (this.registrationform.valid) {
+      this.store.dispatch(register({user:this.registrationform.value}))
+      this.toast.success('User successfully registered')
+
+      this.router.navigate(['/login'])
+
+    }
+    else {
+    }
+
+    // this.store.dispatch(register({user:this.registrationform.value}))
+    // this.router.navigate(['register'])
 
   }
 

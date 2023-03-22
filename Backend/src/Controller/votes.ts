@@ -38,7 +38,6 @@ export const getVotes:RequestHandler=async (req,res)=>{
       if (error) {
         return res.status(422).json(error.details[0].message);
       }
-
       if (req.body ) {
         _db.exec('insertVote', { id, answerId,author });
   

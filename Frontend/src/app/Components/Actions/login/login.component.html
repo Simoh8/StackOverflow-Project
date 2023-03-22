@@ -6,20 +6,21 @@
 
 
 <form [formGroup]="myForm" (ngSubmit)="login()">
-
+    
     <label for="email">Email</label>
     <input type="email" name="" id="" placeholder="Enter Your Email" formControlName="email" >
     <small style="color: red; align-self: top;" *ngIf="!myForm.get('email')?.valid && myForm.get('email')?.touched">please enter a valid email</small>
     <div class="labelss">
     <label for="password"> Password</label>
     <label for="forgotpass" routerLink="/forgotpassword" class="forg">Forgot password ?</label>
+
 </div>
     <input type="text"  placeholder="Enter Your Password" name="" id="" formControlName="password" >
     <small style="color: red; align-self: top;" *ngIf="!myForm.get('password')?.valid && myForm.get('password')?.touched">please enter a password</small>
+    <button type="submit"[disabled]="!myForm.valid">LOGIN</button>
 
-    <!-- <button routerLink="/">LOGIN</button> -->
-    <button routerLink="" >LOGIN</button>
 </form>
+
  <div class="reg">
     <div class="single">
     <p>Don't have an Account ? </p> <p routerLink="/register" class="links">Signup </p>

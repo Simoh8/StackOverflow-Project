@@ -12,12 +12,13 @@ const  _db = new DatabaseHelper()
 dotenv.config({ path: path.resolve(__dirname, '../../.env') })
 
 interface ExtendedRequest extends Request{
-
-    body:{username:string ,
+  body:{username:string ,
         email:string,
-        password:string}
+        password:string
+    }
     info?:DecodedData
 }
+
 export async function RegisterUser(req:ExtendedRequest, res:Response){
 try {
     const id =uid()
@@ -36,8 +37,6 @@ catch (error) {
      res.status(500).json(error) 
 }
 }
-
-
 export async function loginUser(req:ExtendedRequest, res:Response){
 try {
     const{email,password} = req.body
@@ -45,28 +44,32 @@ try {
     if(error){
         return res.status(422).json(error.details[0].message)
     }
+
+
     
     const user:User[]= await (await _db.exec('getUserByEmail', {email:email} )).recordset
-    console.log(email);
-    console.log(password);
-    console.log(user[0])
-    
     
         if(!user[0]){
-         return res.status(404).json('User Not found in database')
+         return res.status(404).json(' Not found in database')
         }
     const valid= await Bcrypt.compare(password, user[0].password)
+    console.log(password);
+        
     if(!valid){
-        return res.status(404).json('User Not found in the database')
+        return res.status(404).json('wrong password')
     }
-
+        
     const payload= user.map(item=>{
         const {password,...rest}=item
         return rest
+
     })
-    const token = jwt.sign(payload[0], 
+
+    
+        const token = jwt.sign(payload[0], 
         process.env.SECRETKEY as string ,
-        {expiresIn:'3600s'})
+        {expiresIn:'7200s'})
+
     return res.status(200).json({message:"Welcome To StackOverflow", token, role:user[0].role, username:user[0].username,})
 
 } catch (error) {

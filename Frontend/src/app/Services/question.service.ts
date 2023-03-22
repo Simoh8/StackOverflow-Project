@@ -1,38 +1,38 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Title } from '@angular/platform-browser';
-import { Subject, Observable } from 'rxjs';
-import { Question, Message } from '../Interfaces';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class QuestionService {
-    getQuestionById(questionId: any) {
-        throw new Error('Method not implemented.');
-    }
 
+  private apiUrl = 'http://localhost:4500/questions/all';
 
-  constructor( private http:HttpClient) { }
-  booking$=new Subject<Question[]>()
+  constructor(private http: HttpClient) { }
 
-  addQuestion(question:AddQuestion):Observable<Message>{
-    return this.http.post<Message>('http://localhost:4200/',question)
+  getAllQuestions(): Observable<Question[]> {
+    return this.http.get<Question[]>(this.apiUrl);
+
   }
-  
-  getUserQuestion():Observable<Question[]>{
-    return this.http.get<Question[]>('http://localhost:4002/questions/emails');
+  addQuestion(question: Question): Observable<Question[]> {
+    return this.http.post<Question[]>('http://localhost:4500/questions/all', question)
   }
 
-  getOneBooking(title:string):Observable<Question>{
-   return  this.http.get<Question>(`http://localhost:4002/flights/${Title}`)
-  }
+}
 
-  deleteQuestion(id:string):Observable<Message>{
-    return  this.http.delete<Message>(`http://localhost:4002/flights/${id}`)
-   }
+interface Question {
 
-   updateBooking(id:string,updatedBooking:AddBooking):Observable<Booking>{
-    return  this.http.put<Booking>(`http://localhost:4002/flights/${id}`, updatedBooking)
-   }
- }
+  title: string;
+  content: string;
+  tags: string[];
+  createdAt: Date
+  author: string;
+  // other properties...
+}
+
+interface addQuestion{
+  title: string;
+  content: string;
+  tags: string[];
+}
