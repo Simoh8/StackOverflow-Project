@@ -11,7 +11,6 @@ cron.schedule('*/10 * * * * *', async() => {
   await sendWelcomeEmail()
 });
 
-
 app.listen(3200, ()=>{
     console.log('Hello server is running is Running');
     

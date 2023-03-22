@@ -1,5 +1,5 @@
 import { CommonModule, Time } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { PostQuestionComponent } from '../post-question/post-question.component';
 import { AppModule } from 'src/app/app.module';
 import { TruncatePipe } from 'src/app/Pipes/Truncatepipe';
@@ -10,6 +10,8 @@ import { ClickColorDirective, } from 'src/app/Directives/highlight.directive';
 import { trigger, state, style, transition, animate } from '@angular/animations';
 import { ButtonAnimationDirective } from 'src/app/Directives/button-animation.directive';
 import {   TitleCasePipe } from "../../../Pipes/Titlepipe";
+import { QuestionService } from 'src/app/Services/question.service';
+import { Question } from 'src/app/Interfaces';
 @Component({
     selector: 'app-home',
     templateUrl: './home.component.html',
@@ -29,7 +31,7 @@ import {   TitleCasePipe } from "../../../Pipes/Titlepipe";
     imports: [CommonModule, RouterModule,   HttpClientModule,NgxPaginationModule,ClickColorDirective, ButtonAnimationDirective, TruncatePipe, TitleCasePipe]
 })
 
-export class HomeComponent {
+export class HomeComponent  implements OnInit{
   animationState = 'normal';
 
   animateButton() {
@@ -38,6 +40,38 @@ export class HomeComponent {
 tags: string[] = [
   'javascript','Html'
 ];
+
+questions:Question[] = [];
+
+constructor(private questionService: QuestionService){
+  
+}
+  ngOnInit(): void {
+    this.questionService.getAllQuestions().subscribe((questions) => {
+      this.questions = questions
+console.log(questions);
+    
+    })
+  }
+
+ 
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 icon: string="Z";
 user: string='simon';
 timestamp: string='asked 2 minutes ago'

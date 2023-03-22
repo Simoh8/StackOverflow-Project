@@ -16,6 +16,25 @@
 
 
 USE Stack 
+
+
+GO
+
+CREATE OR ALTER PROCEDURE paginations
+    @page INT,
+    @pageSize INT
+AS
+BEGIN
+    SELECT * FROM questions
+    ORDER BY created_at DESC
+    OFFSET (@page - 1) * @pageSize ROWS
+    FETCH NEXT @pageSize ROWS ONLY
+END
+
+
+
+
+
 EXEC getUserByEmail 'oumaj202@gmail.com';
 
 select * FROM users
@@ -108,21 +127,21 @@ EXECUTE insertOrUpdateQuestion '9', 'Question 9', 'Content for question 9', 'tag
 -- (9, 1, '32', '2', '9'),
 -- (10, -1, '55', '2', '10');
 
--- USE Stack;
+USE Stack;
 
--- INSERT INTO question_tag (questionId, tagId)
--- VALUES
--- ('1', '1'),
--- ('1', '2'),
--- ('1', '3'),
--- ('2', '4'),
--- ('2', '5'),
--- ('2', '6'),
--- ('3', '1'),
--- ('3', '7'),
--- ('3', '8'),
--- ('4', '9'),
--- ('5', '10');
+INSERT INTO question_tag (questionId, tagId)
+VALUES
+('1', '1'),
+('1', '2'),
+('1', '3'),
+('2', '4'),
+('2', '5'),
+('2', '6'),
+('3', '1'),
+('3', '7'),
+('3', '8'),
+('4', '9'),
+('5', '10');
 
 -- USE Stack;
 
@@ -139,20 +158,20 @@ EXECUTE insertOrUpdateQuestion '9', 'Question 9', 'Content for question 9', 'tag
 -- ('9', 'Answer 9 content', GETDATE(), GETDATE(), '5', '8'),
 -- ('10', 'Answer 10 content', GETDATE(), GETDATE(), '5', '10');
 
--- USE Stack;
+USE Stack;
 
--- INSERT INTO question (id, title, content, tags, author)
--- VALUES
--- ('1', 'How do I write a Python function?', 'I am new to programming and would like to learn how to write a function in Python. Can someone please provide an example?', 'Python, function, beginner', '1'),
--- ('2', 'What is the difference between a list and a tuple?', 'I am confused about the differences between Python lists and tuples. Can someone explain?', 'Python, list, tuple', '2'),
--- ('3', 'How can I improve my SQL skills?', 'I have some basic knowledge of SQL, but I would like to improve my skills. Any tips or resources?', 'SQL, database, skills', '3'),
--- ('4', 'What are the best practices for writing clean code?', 'I want to improve the readability and maintainability of my code. What are some best practices for writing clean code?', 'coding, best practices, readability', '4'),
--- ('5', 'How can I speed up my Python code?', 'I have a Python script that is running too slowly. What are some techniques I can use to speed it up?', 'Python, optimization, performance', '5'),
--- ('6', 'What are the benefits of using version control?', 'I have heard about version control systems like Git and SVN, but I am not sure why I should use them. What are the benefits?', 'version control, Git, SVN', '6'),
--- ('7', 'How do I install a Python package?', 'I want to use a Python package in my project, but I am not sure how to install it. Can someone provide instructions?', 'Python, package, installation', '7'),
--- ('8', 'What are the best tools for data visualization?', 'I want to create some visualizations of my data. What are the best tools or libraries to use?', 'data visualization, tools, libraries', '8'),
--- ('9', 'What is the difference between machine learning and deep learning?', 'I am new to the field of AI and am confused about the differences between machine learning and deep learning. Can someone explain?', 'AI, machine learning, deep learning', '9'),
--- ('10', 'How can I secure my web application?', 'I am developing a web application and want to make sure it is secure. What are some best practices for web application security?', 'web application, security, best practices', '10');
+INSERT INTO question (id, title, content, tags, author)
+VALUES
+('1', 'How do I write a Python function?', 'I am new to programming and would like to learn how to write a function in Python. Can someone please provide an example?', 'Python, function, beginner', '1'),
+('2', 'What is the difference between a list and a tuple?', 'I am confused about the differences between Python lists and tuples. Can someone explain?', 'Python, list, tuple', '2'),
+('3', 'How can I improve my SQL skills?', 'I have some basic knowledge of SQL, but I would like to improve my skills. Any tips or resources?', 'SQL, database, skills', '3'),
+('4', 'What are the best practices for writing clean code?', 'I want to improve the readability and maintainability of my code. What are some best practices for writing clean code?', 'coding, best practices, readability', '4'),
+('5', 'How can I speed up my Python code?', 'I have a Python script that is running too slowly. What are some techniques I can use to speed it up?', 'Python, optimization, performance', '5'),
+('6', 'What are the benefits of using version control?', 'I have heard about version control systems like Git and SVN, but I am not sure why I should use them. What are the benefits?', 'version control, Git, SVN', '6'),
+('7', 'How do I install a Python package?', 'I want to use a Python package in my project, but I am not sure how to install it. Can someone provide instructions?', 'Python, package, installation', '7'),
+('8', 'What are the best tools for data visualization?', 'I want to create some visualizations of my data. What are the best tools or libraries to use?', 'data visualization, tools, libraries', '8'),
+('9', 'What is the difference between machine learning and deep learning?', 'I am new to the field of AI and am confused about the differences between machine learning and deep learning. Can someone explain?', 'AI, machine learning, deep learning', '9'),
+('10', 'How can I secure my web application?', 'I am developing a web application and want to make sure it is secure. What are some best practices for web application security?', 'web application, security, best practices', '10');
 
 -- USE Stack;
 

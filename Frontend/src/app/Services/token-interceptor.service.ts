@@ -9,7 +9,7 @@ export class TokenInterceptorService implements HttpInterceptor {
   constructor() { }
 
   intercept(req:HttpRequest<any> , next:HttpHandler){
-    if(req.url!=='http://localhost:4200/login' && req.url!=='http://localhost:4200/register'){
+    if(req.url!=='http://localhost:4500/login' && req.url!=='http://localhost:4500/register'){
       const token = localStorage.getItem('token') as string
     let modifiedReq= req.clone({headers:new HttpHeaders().append('token', token).append('Custom', 'Just see Me')})
     return next.handle(modifiedReq)

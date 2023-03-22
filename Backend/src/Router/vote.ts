@@ -1,5 +1,4 @@
 import { Router } from "express";
-import { VerifyToken } from "../Middlewares/VerifyToken";
 import { addVote, deleteVote, getVotes } from "../Controller/votes";
 
 const voterouter = Router()

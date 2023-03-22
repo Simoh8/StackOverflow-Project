@@ -30,7 +30,7 @@
     <button  class="button-animation" appButtonAnimation> Filter</button>
 </div>
 <div><hr></div>
-<div class="divquestion">
+<div class="divquestion"  *ngFor=" let question of questions">
     <div class="matrix">
     <div class="votes">
          <p>{{votes}} Votes</p>
@@ -38,19 +38,18 @@
          <p>{{views}} Views</p>
     </div>
      <div class="quiz">
-    <p style="color: #0F97FF; "> {{question | truncate: 50 | titleCase }}</p>
+    <p style="color: #0F97FF; "> {{question.title | truncate: 50 | titleCase }}</p>
 
-    <div class="descriptions">
-        {{description | truncate: 50}}
+    <div class="descriptions" >
+        {{question.content | truncate: 170}}
     </div>
 </div>
 </div>
-
 <div class="tagstime">
-<div style="background-color: rgb(154, 146, 146); padding: 0.5rem; border-radius: 0.5rem;">{{tags}}</div>
-    {{icon}}
-    {{user}}
-    {{timestamp}}
+<div style="background-color: rgb(154, 146, 146); padding: 0.5rem; border-radius: 0.5rem;">{{question.tags}}</div>
+
+ <p> Username: {{ question.author}}</p>
+    {{question.createdAt | date}}
 </div>
 
 </div>
@@ -74,18 +73,13 @@
     <button>13</button>
     <button>14</button>
     <button>Per page</button>
-
-
-
-
+</div>
 </div>
 
 
 
 
-
 </div>
-    </div>
 
     <div class="left-column">
         <div class="blog">
