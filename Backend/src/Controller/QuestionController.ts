@@ -88,38 +88,6 @@ export const getbyUser=async(req:ExtendedRequest,res:Response)=>{
   }
 
 
-  // export async function addQuestion(req: ExtendedRequest, res: Response) {
-  //   try {
-  //     const id = uid();
-  
-  //     const author = req.user?.id ?? 'unknown';
-  //     console.log('the author', author);
-  
-  //     const { error } = AddQuestion.validate(req.body);
-  
-  //     if (error) {
-  //       return res.status(422).json(error.details[0].message);
-  //     }
-  
-  //     if (req.body.title && req.body.content && req.body.tags) {
-  //       _db.exec('insertOrUpdateQuestion', {
-  //         id,
-  //         title: req.body.title,
-  //         content: req.body.content,
-  //         tags: req.body.tags,
-  //         author,
-  //       });
-  
-  //       return res.status(201).json({ message: 'Question Added' });
-  //     }
-  //   } catch (error: any) {
-  //     return res.status(500).json(error.message);
-  //   }
-  // }
-  
-
-
-
 
 
 
@@ -127,10 +95,7 @@ export const getbyUser=async(req:ExtendedRequest,res:Response)=>{
     try {
       const id = uid();
           const { title, content, tags ,author} = req.body;
-      // const author = req.user?.id; // Assuming you have a user object with an id field
-      // console.log( 'the author',author)
-      // console.log(user);
-      
+ 
       const { error } = AddQuestion.validate(req.body);
   
       if (error) {

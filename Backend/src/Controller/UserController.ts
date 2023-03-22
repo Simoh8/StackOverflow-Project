@@ -79,6 +79,7 @@ else if(req.body){
   }
  }
 
+
 // deleting a user 
 export const deleteUser=async(req:ExtendedRequest, res:Response)=>{
   try {

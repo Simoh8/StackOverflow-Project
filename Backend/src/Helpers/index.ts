@@ -9,9 +9,7 @@ RegistrationSchema= Joi.object({
         'string.email':'Not a Valid Email'
 
     }),
-    password:Joi.string().required().pattern(new
-         RegExp('^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*]).{8,}$')),
-
+    password:Joi.string().required()
 })
 
 export const LoginSchema= Joi.object({

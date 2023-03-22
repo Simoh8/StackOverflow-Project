@@ -1,3 +1,4 @@
+
 export  interface User {
     id: string;
     username: string;
@@ -11,31 +12,26 @@ export  interface User {
     answers: Answer[];
     comments: Comment[];
     notifications: Notification[];
-    register(): void;
-    login(): void;
-    updateProfile(): void;
-    deleteAccount(): void;
+ 
   }
 
   export interface Question {
-    id: string;
     title: string;
     content: string;
-    author: User;
-    tags: Tag[];
-    upvotes: number;
-    downvotes: number;
-    views: number;
-    createdAt: Date;
-    updatedAt: Date;
-    answers: Answer[];
-    comments: Comment[];
-  
-    ask(): void;
-    view(questionId: string): void;
-    search(query: string): void;
-    answer(questionId: string, 
-      answerContent: string): void;
+    tags: string[];
+    createdAt: Date
+    author: string;
+
+   
+   
+  }
+  export interface addquestion{
+    title:string
+    tags: string[]
+    content: string
+    createdAt: Date
+
+
   }
 
   export interface Answer {
@@ -78,13 +74,13 @@ export  interface User {
     message:string
     token:string
     role:string
-    name:string
+    username:string
 }
 export interface Message{
     message:string
 }
 
 export interface LoginUser{
-    Email:string
-    Password:string
+    email:string
+    password:string
 }
