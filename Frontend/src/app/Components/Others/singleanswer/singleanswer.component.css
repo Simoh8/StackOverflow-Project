@@ -15,9 +15,10 @@ a{
 .voter{
     display: flex;
     flex-direction: column;
-    margin-top: 4rem;
+    margin-top: 13rem;
     align-content: center;
     justify-items: center;
+    gap: 4rem;
 }
 .majodiv{
     padding: 1rem;
@@ -28,12 +29,11 @@ a{
     gap: 1rem;
 }
 .divmain{
-    border: 1px solid red;
-    width: 80%;
+    width: 90%;
     margin: auto;
     display: flex;
     gap: 2rem;
-
+font-size: small;
 
 }
 button{
@@ -44,6 +44,9 @@ button{
     height: 10rem;
     box-shadow: 0 0 1rem rgba(0, 0, 0, 0.2);
 
+}
+img{
+    height: 3rem;
 }
 textarea{
     width: 30rem;

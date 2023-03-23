@@ -1,0 +1,242 @@
+USE Stack
+CREATE TABLE answer (
+    id VARCHAR(255) PRIMARY KEY,
+    content TEXT,
+    createdAt DATETIME DEFAULT GETDATE(),
+    updatedAt DATETIME DEFAULT GETDATE(),
+    questionId VARCHAR(255),
+    author VARCHAR(255),
+    FOREIGN KEY (questionId) REFERENCES question(id) ON DELETE CASCADE,
+    FOREIGN KEY (author) REFERENCES users(id) 
+);
+USE Stack
+CREATE TABLE comment (
+    id VARCHAR(255) PRIMARY KEY,
+    content TEXT,
+    createdAt DATETIME DEFAULT GETDATE(),
+    updatedAt DATETIME DEFAULT GETDATE(),
+    questionId VARCHAR(255),
+    answerId VARCHAR(255),
+    author VARCHAR(255),
+    FOREIGN KEY (questionId) REFERENCES question(id) ON DELETE CASCADE,
+    FOREIGN KEY (answerId) REFERENCES answer(id),
+    FOREIGN KEY (author) REFERENCES users(id) 
+);
+ 
+CREATE TABLE vote (
+  id INT PRIMARY KEY,
+  value INT NOT NULL,
+  questionId VARCHAR(255),
+  answerId VARCHAR(255),
+  author VARCHAR(255),
+  FOREIGN KEY (questionId) REFERENCES question(id) ,
+  FOREIGN KEY (answerId) REFERENCES answer(id),
+  FOREIGN KEY (author) REFERENCES users(id) ON DELETE CASCADE
+);
+
+CREATE TABLE question_tag (
+    questionId VARCHAR(255),
+    tagId VARCHAR(255),
+    PRIMARY KEY (questionId, tagId),
+    FOREIGN KEY (questionId) REFERENCES question(id) ON DELETE CASCADE,
+    FOREIGN KEY (tagId) REFERENCES tag(id) 
+);
+
+
+CREATE TABLE question (
+    id VARCHAR(255) PRIMARY KEY,
+    title VARCHAR(255),
+    content TEXT,
+    tags TEXT,
+    createdAt DATETIME DEFAULT GETDATE(),
+    updatedAt DATETIME DEFAULT GETDATE(),
+    author VARCHAR(255),
+    FOREIGN KEY (author) REFERENCES users(id) ON DELETE CASCADE
+);
+
+
+
+
+CREATE TABLE tag (
+    id VARCHAR(255) PRIMARY KEY,
+    name VARCHAR(255)
+);
+
+
+
+use Stack
+GO
+CREATE PROCEDURE GetQuestionData
+    @questionId VARCHAR(255)
+AS
+BEGIN
+    SELECT a.id AS answerId, a.content AS answerContent, a.createdAt AS answerCreatedAt, a.updatedAt AS answerUpdatedAt, a.author AS answerAuthor,
+           c.id AS commentId, c.content AS commentContent, c.createdAt AS commentCreatedAt, c.updatedAt AS commentUpdatedAt, c.author AS commentAuthor,
+           v.value AS voteValue, v.author AS voteAuthor,
+           qt.tagId AS tagId
+    FROM answer a
+    LEFT JOIN comment c ON a.id = c.answerId
+    LEFT JOIN vote v ON (a.id = v.answerId OR v.questionId = @questionId)
+    LEFT JOIN question_tag qt ON a.questionId = qt.questionId
+    WHERE a.questionId = @questionId
+    ORDER BY a.createdAt DESC
+END
+
+
+
+INSERT INTO answer (id, content, questionId, author)
+VALUES 
+('1', 'Sample answer content 1', '1', '1'),
+('2', 'Sample answer content 2', '1', '2'),
+('3', 'Sample answer content 3', '2', '3'),
+('4', 'Sample answer content 4', '2', '4'),
+('5', 'Sample answer content 5', '2', '1'),
+('6', 'Sample answer content 6', '3', '2'),
+('7', 'Sample answer content 7', '3', '3'),
+('8', 'Sample answer content 8', '3', '4'),
+('9', 'Sample answer content 9', '4', '1'),
+('10', 'Sample answer content 10', '4', '2');
+
+USE Stack
+
+EXEC GetQuestionDetails '4'
+SELECT * from answer
+
+
+GO
+CREATE PROCEDURE GetQuestionDetails
+    @questionId VARCHAR(255)
+AS
+BEGIN
+    SELECT *
+    FROM question q
+    LEFT JOIN users u ON q.author = u.id
+    LEFT JOIN (
+        SELECT questionId, COUNT(*) as answerCount
+        FROM answer
+        GROUP BY questionId
+    ) a ON q.id = a.questionId
+    LEFT JOIN (
+        SELECT id, COUNT(*) as commentCount
+        FROM comment
+        GROUP BY id
+    ) c ON q.id = c.id
+    LEFT JOIN (
+        SELECT id, SUM(value) as voteCount
+        FROM vote
+        GROUP BY id
+    ) v ON q.id = v.id
+    
+    WHERE q.id = @questionId
+END
+
+
+
+
+
+
+USE Stack
+EXEC GetUserActivity '5'
+
+GO
+CREATE PROCEDURE GetUserActivity
+    @userId VARCHAR(255)
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    -- Get all questions created by the user
+    SELECT * FROM question
+    WHERE author = @userId;
+
+    -- Get all answers created by the user
+    SELECT * FROM answer
+    WHERE author = @userId;
+
+    -- Get all comments created by the user
+    SELECT * FROM comment
+    WHERE author = @userId;
+
+    -- Get all votes cast by the user
+    SELECT * FROM vote
+    WHERE author = @userId;
+END
+
+
+
+USE Stack 
+GO
+USE Stack
+EXEC GetQuestionData '4'
+
+GO
+
+CREATE PROCEDURE GetQuestionData
+    @questionId VARCHAR(255)
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    SELECT *
+    FROM answer
+    WHERE questionId = @questionId;
+
+    SELECT *
+    FROM answer
+    WHERE questionId = @questionId 
+
+    SELECT *
+    FROM question_tag
+    WHERE questionId = @questionId;
+
+   
+    
+END
+
+CREATE TABLE users (
+    id VARCHAR(255) PRIMARY KEY,
+    username VARCHAR(255) UNIQUE,
+    email VARCHAR(255) UNIQUE,
+    password VARCHAR(255),
+    reputation DECIMAL(10,2),
+    avatarUrl VARCHAR(255),
+    bio TEXT,
+    isSent VARCHAR(150) DEFAULT '0',
+    Role VARCHAR(100) DEFAULT 'user',
+    createdAt DATETIME DEFAULT GETDATE(),
+    updatedAt DATETIME DEFAULT GETDATE(),
+);
+
+
+
+GO
+
+
+
+
+
+
+
+
+
+
+
+USE Stack
+GO
+
+CREATE OR ALTER PROCEDURE GetUserActivity
+    @userId VARCHAR(255)
+AS
+BEGIN
+    SELECT q.id AS questionId, q.title AS questionTitle, q.content AS questionContent, q.tags AS questionTags, q.createdAt AS questionCreatedAt, q.updatedAt AS questionUpdatedAt,
+           a.id AS answerId, a.content AS answerContent, a.createdAt AS answerCreatedAt, a.updatedAt AS answerUpdatedAt,
+           c.id AS commentId, c.content AS commentContent, c.createdAt AS commentCreatedAt, c.updatedAt AS commentUpdatedAt,
+           v.id AS voteId, v.value AS voteValue, v.id AS voteQuestionId, v.answerId AS voteAnswerId
+    FROM users u
+    LEFT JOIN question q ON q.author = u.id
+    LEFT JOIN answer a ON a.author = u.id
+    LEFT JOIN comment c ON c.author = u.id
+    LEFT JOIN vote v ON v.author = u.id
+    WHERE u.id = @userId
+END
+

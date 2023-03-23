@@ -1,8 +1,8 @@
 <div class="divmain">
     <div class="menu">
-        <a href="">Home</a>
-        <a href="">Users</a>
-        <a href="">Questions</a>
+        <a href="" routerLink="/">Home</a>
+        <a href=""routerLink="users" >Users</a>
+        <a href="" routerLink="/">Questions</a>
     </div>
 
 
@@ -12,34 +12,29 @@
 <div class="combo">
 
     <div class="voter">
-    <img src="https://img.icons8.com/emoji/256/red-triangle-pointed-up-emoji.png" alt="">
-    {{votes}}
-    <img src="https://img.icons8.com/emoji/256/red-triangle-pointed-down-emoji.png" alt="">
+        <button (click)="upvote()" > <img src="https://img.icons8.com/emoji/256/red-triangle-pointed-up-emoji.png" alt=""></button>
+   
+   {{count}} 
+   <button (click)="downvote()"><img  src="https://img.icons8.com/emoji/256/red-triangle-pointed-down-emoji.png" alt=""></button> 
 </div>
      <div>  
-         <p>Description{{description}}</p>
+         <!-- <p>Description{{}}</p> -->
 <div class="desc"></div>   
-        <p>What the user has tried</p>
+        <p>Answers</p>
         <div class="desc"></div>     </div>
-    </div>
+</div>
 </div>
 
 <div class="combo">
 
-    <div class="voter">
-    <img src="https://img.icons8.com/emoji/256/red-triangle-pointed-up-emoji.png" alt="">
-    {{votes}}
- 
-    <img src="https://img.icons8.com/emoji/256/red-triangle-pointed-down-emoji.png" alt="">
 
-</div>
 
      <div>  
-         <p>Comments</p>
-        <textarea name="" id="" cols="30" rows="10" placeholder="Enter the Questions description">{{comments}}</textarea>
+         <p>Comments:</p>
+        <!-- <textarea name="" id="" cols="30" rows="10" placeholder="Enter the Questions description">{{comments}}</textarea> -->
    
-        <p>solution</p>
-        <textarea name="" id="" cols="30" rows="10" >{{solution}}</textarea>
+        <!-- <p>solution</p>
+        <textarea name="" id="" cols="30" rows="10" >{{solution}}</textarea> -->
     </div>
     </div>
 

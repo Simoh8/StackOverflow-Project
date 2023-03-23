@@ -7,19 +7,19 @@ import { User } from '../Interfaces'
   providedIn: 'root'
 })
 export class UserService {
-  private baseUrl = 'http://api.stackoverflow.com/users';
+  private baseUrl = 'http://localhost:4500/users/all';
 
   constructor(private http: HttpClient) { }
 
-  getUser(id: number): Observable<User> {
-    const url = `${this.baseUrl}/${id}`;
-    return this.http.get<User>(url);
+  getAllUser(): Observable<User[]> {
+    const url = `${this.baseUrl}`;
+    return this.http.get<User[]>(url);
   }
 
-  updateUser(user: User): Observable<User> {
-    const url = `${this.baseUrl}/${user.id}`;
-    return this.http.put<User>(url, user);
-  }
+  // updateUser(user: User): Observable<User> {
+  //   const url = `${this.baseUrl}/${user.id}`;
+  //   return this.http.put<User>(url, user);
+  // }
 
   // login(username: string, password: string): Observable<boolean> {
   //   // Handle login logic and return an Observable with the result

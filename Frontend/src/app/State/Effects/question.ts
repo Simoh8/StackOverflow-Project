@@ -11,11 +11,22 @@ export class QuestionEffects {
   constructor(private actions$: Actions, private questionService: QuestionService
   ) { }
 
-  loadQuestions = createEffect(() => {
-    return this.actions$.pipe(
-      // ofType(QuestionAction.getQuestions)
-    )
 
-  })
+  loadQuestions$ = createEffect(() => this.actions$.pipe(
+    ofType(QuestionAction.loadQuestions),
+    // add page and pageSize to the action
+    mergeMap((action) => this.questionService.getQuestions(action.page, action.pageSize).pipe(
+        map(questions => QuestionAction.loadQuestionsSuccess({ questions })),
+        catchError(error => of(QuestionAction.loadQuestionsFailure({ error })))
+    )),
+));
+
+// addQuestion$ = createEffect(() => this.actions$.pipe(
+//     ofType(QuestionAction.addQuestion),
+//     mergeMap((action) => this.questionService.addQuestion(action.question).pipe(
+//         map(question => QuestionAction.addQuestionSuccess(question )),
+//         catchError(error => of(QuestionAction.addQuestionFailure({ error })))
+//     )),
+// ));
 
 }

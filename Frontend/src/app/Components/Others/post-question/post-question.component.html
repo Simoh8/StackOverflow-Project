@@ -1,4 +1,4 @@
-<form [formGroup]="">
+<form [formGroup]="questionform" (ngSubmit)="postquestion()" >
 <div class="postquestion">
 <p style="padding: 10px;">Ask a public question</p>
 <div class="steps">
@@ -22,7 +22,7 @@
 <div class="titlediv">
     <label for="tittle" style="font-weight: bold;">Title</label>
     <p>Be specific and imagine you're asking a question to another person</p>
-   <textarea name="" id="" cols="30" rows="10"></textarea>
+   <textarea name="" id="" cols="30" rows="10" formControlName="title"></textarea>
 </div>
 
 <div class="otherdiv">
@@ -41,9 +41,9 @@
 <div class="deta">
 <label for="details" style="font-weight: bold;">What are the deatils of your problem</label>
 <p>introduce the problem and expand on whatyou put in the title.(minimum characters is 20 )</p>
-<textarea name="" id="" cols="30" rows="10" placeholder=" explain the Problem details"></textarea>
+<textarea name="" id="" cols="0" rows="10" placeholder=" explain the Problem details" formControlName="content"></textarea>
 </div>
-
+<input style="width: 20%;" type="text" class="tags" placeholder="Enter the tags " formControlName="tags">
 
 <button type="submit">Post Question</button>
 </div>

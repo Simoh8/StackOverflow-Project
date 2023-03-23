@@ -4,7 +4,8 @@ import { PostQuestionComponent } from '../post-question/post-question.component'
 import { AppModule } from 'src/app/app.module';
 import { TruncatePipe } from 'src/app/Pipes/Truncatepipe';
 import { Route, Router, RouterModule } from '@angular/router';
-// import { TitleCasePipe } from '@angular/common';
+import { HttpClientModule} from '@angular/common/http';
+import {NgxPaginationModule} from 'ngx-pagination';
 import { ClickColorDirective, } from 'src/app/Directives/highlight.directive';
 import { trigger, state, style, transition, animate } from '@angular/animations';
 import { ButtonAnimationDirective } from 'src/app/Directives/button-animation.directive';
@@ -27,7 +28,7 @@ import { Question } from 'src/app/Interfaces';
             transition('normal <=> clicked', animate('300ms ease-in'))
         ])
     ],
-    imports: [CommonModule, RouterModule, ClickColorDirective, ButtonAnimationDirective, TruncatePipe, TitleCasePipe]
+    imports: [CommonModule, RouterModule,   HttpClientModule,NgxPaginationModule,ClickColorDirective, ButtonAnimationDirective, TruncatePipe, TitleCasePipe]
 })
 
 export class HomeComponent  implements OnInit{
@@ -41,14 +42,17 @@ tags: string[] = [
 ];
 
 questions:Question[] = [];
+currentPage = 1;
+ageSize = 1;
+pages = [1,2,3,4,5,];
 
-constructor(private questionService: QuestionService){
+constructor(private questionService: QuestionService ){
   
 }
   ngOnInit(): void {
-    this.questionService.getAllQuestions().subscribe((questions) => {
+    this.questionService.getQuestions().subscribe((questions) => {
       this.questions = questions
-console.log(questions);
+      console.log(questions);
     
     })
   }

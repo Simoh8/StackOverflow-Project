@@ -37,15 +37,11 @@ export class RegisterComponent implements OnInit {
     if (this.registrationform.valid) {
       this.store.dispatch(register({user:this.registrationform.value}))
       this.toast.success('User successfully registered')
-
       this.router.navigate(['/login'])
 
     }
     else {
     }
-
-    // this.store.dispatch(register({user:this.registrationform.value}))
-    // this.router.navigate(['register'])
 
   }
 

@@ -5,7 +5,7 @@ import {  getOneQuestion, deleteQuestion, getbyUser,addQuestion,getQuestions } f
 const router = Router()
 
 router.get('/questions/all', getQuestions)
-router.get('/:id', getOneQuestion)
+router.get('question/:id', getOneQuestion)
 router.post('/question/add', addQuestion)
 router.delete('/question/delete/:id',deleteQuestion) 
 router.get('/userquestion/user', getbyUser)

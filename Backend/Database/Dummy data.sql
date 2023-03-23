@@ -15,7 +15,7 @@
 -- EXEC delete_answer '1'
 
 
-USE Stack 
+
 
 
 GO
@@ -113,21 +113,34 @@ EXECUTE insertOrUpdateQuestion '6', 'Question 6', 'Content for question 6', 'tag
 EXECUTE insertOrUpdateQuestion '7', 'Question 7', 'Content for question 7', 'tag7, tag8', 'Mike Chen';
 EXECUTE insertOrUpdateQuestion '8', 'Question 8', 'Content for question 8', 'tag8, tag9', 'Emily Li';
 EXECUTE insertOrUpdateQuestion '9', 'Question 9', 'Content for question 9', 'tag9, tag10', 'David Kim';
+use Stack
+INSERT INTO vote (id, value, answerId, author)
+VALUES
+(1, 1, '1', '1' ),
+(2, 1, '1', '2' ),
+(3, -1, '1', 3 ),
+(4, 1, '2', '4'),
+(5, -1, '2', '8'),
+(6, 1, '76', '1'),
+(7, 1, '66', '1'),
+(8, -1, '70', '1'),
+(9, 1, '32', '2'),
+(10, -1, '55', '2');
 
--- INSERT INTO vote (id, value, questionId, answerId, author)
--- VALUES
--- (1, 1, '1', '1', '1'),
--- (2, 1, '1', '2', '2'),
--- (3, -1, '1', 3, '3'),
--- (4, 1, '2', '4', '4'),
--- (5, -1, '2', 8, '5'),
--- (6, 1, '76', '1', '6'),
--- (7, 1, '66', '1', '7'),
--- (8, -1, '70', '1', '8'),
--- (9, 1, '32', '2', '9'),
--- (10, -1, '55', '2', '10');
+USE Stack
+SELECT * from tag
+INSERT INTO tag (id, name) VALUES 
+('1', 'Technology'),
+('2', 'Fashion'),
+('3', 'Food'),
+('4', 'Sports'),
+('5', 'Music'),
+('6', 'Travel'),
+('7', 'Education'),
+('8', 'Art'),
+('9', 'Health'),
+('10', 'Business');
 
-USE Stack;
 
 INSERT INTO question_tag (questionId, tagId)
 VALUES
@@ -188,3 +201,93 @@ VALUES
 --     ('q9', 'What is the best way to make coffee at home?', 'I want to learn how to make delicious coffee at home without spending a lot of money on equipment.', 'coffee, home brewing, tips', 'u9'),
 --     ('q10', 'How do I build a website from scratch?', 'I want to build a website but have no experience with web development.', 'web development, website, beginner', 'u10');
 
+
+
+
+
+
+
+use Stack
+GO
+CREATE PROCEDURE GetQuestionData
+    @questionId VARCHAR(255)
+AS
+BEGIN
+    SELECT a.id AS answerId, a.content AS answerContent, a.createdAt AS answerCreatedAt, a.updatedAt AS answerUpdatedAt, a.author AS answerAuthor,
+           c.id AS commentId, c.content AS commentContent, c.createdAt AS commentCreatedAt, c.updatedAt AS commentUpdatedAt, c.author AS commentAuthor,
+           v.value AS voteValue, v.author AS voteAuthor,
+           qt.tagId AS tagId
+    FROM answer a
+    LEFT JOIN comment c ON a.id = c.answerId
+    LEFT JOIN vote v ON (a.id = v.answerId OR v.questionId = @questionId)
+    LEFT JOIN question_tag qt ON a.questionId = qt.questionId
+    WHERE a.questionId = @questionId
+    ORDER BY a.createdAt DESC
+END
+
+
+USE Stack
+GO
+CREATE PROCEDURE GetQuestionData
+  @questionId VARCHAR(255)
+AS
+BEGIN
+  SELECT 
+    a.id AS answerId,
+    a.content AS answerContent,
+    a.createdAt AS answerCreatedAt,
+    a.updatedAt AS answerUpdatedAt,
+    c.id AS commentId,
+    c.content AS commentContent,
+    c.createdAt AS commentCreatedAt,
+    c.updatedAt AS commentUpdatedAt,
+    v.id AS voteId,
+    
+    v.value AS voteValue,
+    q.id AS questionId,
+    q.title AS questionTitle,
+    q.content AS questionContent,
+    q.createdAt AS questionCreatedAt,
+    q.updatedAt AS questionUpdatedAt,
+    t.id AS tagId,
+    t.name AS tagName
+  FROM 
+    answer a
+    LEFT JOIN comment c ON c.questionId = a.questionId AND c.answerId = a.id
+    LEFT JOIN vote v ON v.questionId = a.questionId AND v.answerId = a.id
+    INNER JOIN question q ON q.id = a.questionId
+    LEFT JOIN question_tag qt ON qt.questionId = a.questionId
+    LEFT JOIN tag t ON t.id = qt.tagId
+  WHERE 
+    a.questionId = @questionId
+  ORDER BY 
+    a.createdAt DESC;
+END
+USE Stack
+EXEC GetAnswersWithDetails '4'
+
+GO
+CREATE PROCEDURE GetAnswersWithDetails 
+    @questionId VARCHAR(255)
+AS
+BEGIN
+    SELECT 
+        a.id AS answerId, 
+        a.content AS answerContent, 
+        a.createdAt AS answerCreatedAt, 
+        a.updatedAt AS answerUpdatedAt, 
+        c.id AS commentId, 
+        c.content AS commentContent, 
+        c.createdAt AS commentCreatedAt, 
+        c.updatedAt AS commentUpdatedAt, 
+        v.id AS voteId, 
+        v.value AS voteValue, 
+        qt.tagId AS questionTagId
+    FROM 
+        answer a
+        LEFT JOIN comment c ON c.answerId = a.id
+        LEFT JOIN vote v ON v.answerId = a.id
+        LEFT JOIN question_tag qt ON qt.questionId = a.questionId
+    WHERE
+        a.questionId = @questionId;
+END

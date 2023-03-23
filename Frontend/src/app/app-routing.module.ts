@@ -13,6 +13,7 @@ import { PostQuestionComponent } from './Components/Others/post-question/post-qu
 import { SingleanswerComponent } from './Components/Others/singleanswer/singleanswer.component';
 import { SinglequizanswerComponent } from './Components/Others/singlequizanswer/singlequizanswer.component';
 import { UserProfileComponent } from './Components/Others/user-profile/user-profile.component';
+import { UsersComponent } from './Components/users/users.component';
 
 // const routes: Routes = [
 //   {path: 'user', loadChildren:()=>import('./app/app.modules').then(modules => modules.AppModule)}
@@ -26,8 +27,9 @@ const routes: Routes = [
   {path: 'forgotpassword', component: ForgotPasswordComponent},
   {path: 'userprofile', component: UserProfileComponent},
   {path: 'postquestion', component: PostQuestionComponent},
-  {path: 'admin', component: AdminComponent},
+  {path: 'adminuser', component: AdminComponent},
   {path: 'single',component: SinglequizanswerComponent},
+  {path: 'users', component: UsersComponent},
   {path: 'answer', component: SingleanswerComponent},
   {path: 'forteams', component: ForTeamsComponent},
   {path: 'about', component: AboutComponent},

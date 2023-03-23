@@ -1,19 +1,40 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
+import { QuestionService } from 'src/app/Services/question.service';
+import { Question } from 'src/app/Interfaces';
+import { Store } from '@ngrx/store';
 
 @Component({
   selector: 'app-singleanswer',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule,RouterModule],
   templateUrl: './singleanswer.component.html',
   styleUrls: ['./singleanswer.component.css']
 })
 export class SingleanswerComponent {
-[x: string]: any;
-votes: number=2;
-solution: any;
-description: any;
-question:string='hello';
-comments:string='hello';
+  question:Question[]=[]
+  ngOnInit(): void {
+   this.store.select('counter').subscribe(state=>{
+  console.log(state);
+  
+    // this.count=state.count
+    
+   })
+  }
 
+
+  count!:number
+  constructor(private questionService: QuestionService ,private store:Store<any>){
+  
+  }
+  upvote(){
+this.store.dispatch({type:'voteup'})
+  }
+    
+  downvote(){
+  this.store.dispatch({type:'votedown'})
+  }
+  
+   
 }

@@ -1,0 +1,10 @@
+USE Stack
+GO
+CREATE OR ALTER PROCEDURE getAllTags
+AS
+BEGIN
+    SET NOCOUNT ON;
+    
+    SELECT *
+    FROM tag;
+END;

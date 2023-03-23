@@ -6,23 +6,27 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class QuestionService {
-
-  private apiUrl = 'http://localhost:4500/questions/all';
+  private apiUrl = 'http://localhost:4500/question/all';
 
   constructor(private http: HttpClient) { }
 
-  getAllQuestions(): Observable<Question[]> {
-    return this.http.get<Question[]>(this.apiUrl);
+  getQuestions(PageNumber = 1, PageSize = 1): Observable<Question[]> {
+    // include query params in the url of page and pageSize
+    return this.http.get<Question[]>('http://localhost:4500/questions/all', { params: { PageNumber: PageNumber.toString(), PageSize: PageSize.toString() } });
+  }
 
+  addQuestion(question: addQuestion): Observable<Question[]> {
+    return this.http.post<Question[]>('http://localhost:4500/question/add', question)
   }
-  addQuestion(question: Question): Observable<Question[]> {
-    return this.http.post<Question[]>('http://localhost:4500/questions/all', question)
-  }
+
+getSingleQuestion():Observable<Question[]>{
+  return this.http.get<Question[]>('http://localhost:4500/question')
+}
 
 }
 
 interface Question {
-
+id:string
   title: string;
   content: string;
   tags: string[];

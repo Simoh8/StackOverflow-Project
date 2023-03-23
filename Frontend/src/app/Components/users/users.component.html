@@ -1,1 +1,10 @@
-<p>users works!</p>
+<div class="container">
+
+<div class="user" *ngFor=" let user of users">
+    <img   src="{{user.avatarUrl}}" alt="" style="align-self: center; border-radius: 50%; height: auto;">
+    <p>Username: {{user.username}}</p>
+    <p>Joined: {{user.createdAt |date }}</p>
+    <p>Email: {{user.email}}</p>
+
+</div>
+</div>

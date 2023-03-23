@@ -1,5 +1,6 @@
 -- the question table with the userid as the foreign key
 USE Stack
+SELECT * from answer
 INSERT INTO question (id, title, content, tags, author)
 VALUES
 ('1', 'What is the best way to learn a new programming language?', 'I am interested in learning a new programming language but I am not sure where to start. Any suggestions?', 'programming, learning', '1'),

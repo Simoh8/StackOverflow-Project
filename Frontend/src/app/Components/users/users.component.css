@@ -1,0 +1,20 @@
+.user{
+    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.2);
+    height: 10rem;
+    background-color: white;
+    width: 12rem;
+    margin: auto;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+font-family: serif;    padding: 1rem;
+    border-radius: 1rem;
+    
+}
+.container{
+    margin-top: 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    width: 95%;
+    margin: auto;
+    gap: 1rem;
+}
