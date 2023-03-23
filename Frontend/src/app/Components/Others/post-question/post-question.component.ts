@@ -16,12 +16,26 @@ export class PostQuestionComponent implements OnInit{
 constructor(public questionService: QuestionService , private formbuilder: FormBuilder ,private route: Router) {
 
  }
+
+ public tagOptions: { id: string, name: string }[] = [];
+
 ngOnInit(): void {
+
+  
   this.questionform=this.formbuilder.group({
     title:['', Validators.required],
     content:['', Validators.required],
-    tags:['', Validators.required]
+    tags:['', Validators.required],
   });
+}
+postquestion(){
+  this.questionService.addQuestion(this.questionform.value).subscribe((res)=>{
+    console.log(res);
+    console.log('hello');
+    
+    
+  })
+  this.route.navigate(['/'])
 }
 
 }

@@ -1,21 +1,16 @@
 
 export  interface User {
-    id: string;
     username: string;
     email: string;
-    password: string;
     avatarUrl: string;
     bio: string;
     createdAt: Date;
-    updatedAt: Date;
-    questions: Question[];
-    answers: Answer[];
-    comments: Comment[];
-    notifications: Notification[];
+
  
   }
 
   export interface Question {
+id: any;
     title: string;
     content: string;
     tags: string[];

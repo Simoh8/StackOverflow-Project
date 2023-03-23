@@ -16,6 +16,8 @@ import { UserEffects } from './State/Effects/user';
 import { userReducer } from './State/Reducers/userReducers';
 import { TokenInterceptorService } from './Services/token-interceptor.service';
 import { ToastrModule,ToastrService } from 'ngx-toastr';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { votereducer } from './State/Reducers/vote';
 
 
 
@@ -32,7 +34,8 @@ import { ToastrModule,ToastrService } from 'ngx-toastr';
       positionClass: 'toast-top-right',
    
   }),
-      ReactiveFormsModule, 
+  NgxPaginationModule,
+    ReactiveFormsModule, 
     ReactiveFormsModule,
     HttpClientModule,
     ClickColorDirective,
@@ -40,7 +43,7 @@ import { ToastrModule,ToastrService } from 'ngx-toastr';
     LayoutModule,
     HeaderComponent,
     FooterComponent,
-    StoreModule.forRoot({user:userReducer}),
+    StoreModule.forRoot({user:userReducer, vote:votereducer}),
     EffectsModule.forRoot([UserEffects])
   ],
   providers: [{provide:HTTP_INTERCEPTORS, useClass:TokenInterceptorService, multi:true}],

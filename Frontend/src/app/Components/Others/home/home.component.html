@@ -5,7 +5,7 @@
     <!-- <h6 routerLink=""  clickColor>public</h6> -->
     <!-- <h6 routerLink="" clickColor>Question</h6> -->
     <h6 routerLink="" clickColor>Tags</h6>
-    <h6 routerLink="" clickColor>Users</h6>
+    <h6 routerLink="" clickColor routerLink="/users" >Users</h6>
     <!-- <h6 routerLink="" clickColor>Companies</h6>
     <h6 routerLink="" clickColor>Explore Collectives</h6>
     <h6 routerLink="" clickColor>Teams</h6>
@@ -30,15 +30,16 @@
     <button  class="button-animation" appButtonAnimation> Filter</button>
 </div>
 <div><hr></div>
-<div class="divquestion"  *ngFor=" let question of questions">
+<div class="divquestion"  *ngFor=" let question of questions ">
     <div class="matrix">
     <div class="votes">
-         <p>{{votes}} Votes</p>
+         <p>{{question. id}} </p>
          <p>{{answers}} Answers</p>
          <p>{{views}} Views</p>
     </div>
      <div class="quiz">
-    <p style="color: #0F97FF; "> {{question.title | truncate: 50 | titleCase }}</p>
+        <a style="text-decoration: none;"routerLink="answer" >  <p style="color: #0F97FF; "> {{question.title | truncate: 50 | titleCase }}</p></a>
+  
 
     <div class="descriptions" >
         {{question.content | truncate: 170}}
@@ -51,35 +52,11 @@
  <p> Username: {{ question.author}}</p>
     {{question.createdAt | date}}
 </div>
+<div><hr></div>
 
-</div>
-
-<div class="pages">
-    <div class="f">
-    <button>1</button>
-    <button>2</button>
-    <button>3</button>
-    <button>4</button>
-    <button>5</button>
-    <button>6</button>
-    <p>...</p>
-    <button>100</button>
-    <button>Next</button>
-
-    
-</div>
-<div class="l">
-    <button>12</button>
-    <button>13</button>
-    <button>14</button>
-    <button>Per page</button>
 </div>
 </div>
 
-
-
-
-</div>
 
     <div class="left-column">
         <div class="blog">

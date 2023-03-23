@@ -1,6 +1,6 @@
 import { state } from "@angular/animations";
 import { createReducer, on } from "@ngrx/store";
-import { number } from "joi";
+// import { number } from "joi";
 import { Question } from "src/app/Interfaces";
 
 export interface QuestionState{
@@ -10,20 +10,4 @@ export interface QuestionState{
     status:'pending' | 'loading' | 'error' | 'success';                                             
     
 }
-// export const initialState: QuestionState={
-//     questions: [],
-//     error: "",
-//     status: "pending"
-// }
-// const initialState: QuestionInterface={
-//     questions: [],
-//     questionId:'',
-//     error: "",
-//     addSuccess:'',
-//     addError:'',
-//     updateError:'',
-//     deleteSuccess:'',
-//     deleteError:'',
-
-// }
 

@@ -9,7 +9,7 @@ export interface User{
    username:string , 
     email:string,
       password:string,
-      role:string,
+      Role:string,
        reputation: string
     
 }

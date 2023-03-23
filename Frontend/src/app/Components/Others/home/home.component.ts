@@ -42,14 +42,17 @@ tags: string[] = [
 ];
 
 questions:Question[] = [];
+currentPage = 1;
+ageSize = 1;
+pages = [1,2,3,4,5,];
 
-constructor(private questionService: QuestionService){
+constructor(private questionService: QuestionService ){
   
 }
   ngOnInit(): void {
-    this.questionService.getAllQuestions().subscribe((questions) => {
+    this.questionService.getQuestions().subscribe((questions) => {
       this.questions = questions
-console.log(questions);
+      console.log(questions);
     
     })
   }

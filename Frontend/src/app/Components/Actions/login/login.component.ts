@@ -33,8 +33,20 @@ export class LoginComponent implements OnInit {
   }
   login() {
     this.store.dispatch(login({ user: this.myForm.value }))
-    this.toast.success('Login success')
-    this.router.navigate([''])
+    this.authentication.loginUser(this.myForm.value).subscribe(res =>{
+      console.log(res);
+      this.auth.setRole(res.role)
+      this.auth.login()
+      localStorage.setItem('token', res.token)
+      if (res.role == 'user' && res.token) {
+          this.router.navigate([''])
+          console.log(res);
+            
+      } else if(res.role == 'admin' && res.token){
+          this.router.navigate(['admin'])  
+      }
+    })
+   
   }
 
   Close() {

@@ -37,6 +37,7 @@ catch (error) {
      res.status(500).json(error) 
 }
 }
+
 export async function loginUser(req:ExtendedRequest, res:Response){
 try {
     const{email,password} = req.body
@@ -44,9 +45,7 @@ try {
     if(error){
         return res.status(422).json(error.details[0].message)
     }
-
-
-    
+   
     const user:User[]= await (await _db.exec('getUserByEmail', {email:email} )).recordset
     
         if(!user[0]){
@@ -70,7 +69,7 @@ try {
         process.env.SECRETKEY as string ,
         {expiresIn:'7200s'})
 
-    return res.status(200).json({message:"Welcome To StackOverflow", token, role:user[0].role, username:user[0].username,})
+    return res.status(200).json({message:"Welcome To StackOverflow", token, role:user[0].Role, username:user[0].username,})
 
 } catch (error) {
     res.status(500).json(error) 

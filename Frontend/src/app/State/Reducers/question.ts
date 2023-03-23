@@ -1,30 +1,70 @@
 import { createReducer, on } from '@ngrx/store';
 import { Question } from 'src/app/Interfaces';
-export interface QuestionInterface {
-  questions: Question[]
-  questionid: string
+import * as QuestionAction from '../Actions/questionActions'
+
+  export interface QuestionsState {
+    questions: Question[];
+    loading: boolean;
+    error: any;
 }
 
-const initialState: QuestionInterface= {
-  questions:[],
-  questionid:''
+
+export const initialState: QuestionsState = {
+    questions: [],
+    loading: false,
+    error: null
 };
 
-// export const questionReducer = createReducer(
-//   initialState,
-//   on(QuestionActions.loadQuestion, (state) => ({
-//     ...state,
-//     loading: true,
-//     error: null
-//   })),
-//   on(QuestionActions.setQuestion, (state, { question }) => ({
-//     ...state,
-//     question,
-//     loading: false
-//   })),
-//   on(QuestionActions.loadQuestionError, (state, { error }) => ({
-//     ...state,
-//     error,
-//     loading: false
-//   }))
-// );
+
+export const questionsReducer = createReducer(
+    initialState,
+    on(QuestionAction.loadQuestions, (state) => {
+        return {
+            ...state,
+            loading: true
+        }
+    }
+    ),
+    on(QuestionAction.loadQuestionsSuccess, (state, { questions }) => {
+        return {
+            ...state,
+            loading: false,
+            questions: [...questions]
+        }
+    }
+    ),
+    on(QuestionAction.loadQuestionsFailure, (state, { error }) => {
+        return {
+            ...state,
+            loading: false,
+            error
+        }
+    }
+    ),
+    on(QuestionAction.addQuestion, (state, { question }) => {
+        return {
+            ...state,
+            loading: true
+        }
+    }
+    ),
+
+    on(QuestionAction.addQuestionSuccess, (state, { question }) => {
+        return {
+            ...state,
+            questions: [...state.questions, question]
+        }
+    }
+    ),
+
+    on(QuestionAction.addQuestionFailure, (state, { error }) => {
+        return {
+            ...state,
+            error
+        }
+    }
+    )
+
+
+
+)

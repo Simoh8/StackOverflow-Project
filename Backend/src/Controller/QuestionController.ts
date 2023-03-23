@@ -10,6 +10,7 @@ const _db= new DatabaseHelper()
 
 interface ExtendedRequest extends Request{
      body:{
+
       title: string,
       content: string,
       author: string ,
@@ -52,7 +53,7 @@ try {
   
 
 
-  const singlequestion:Question[]= await (await  _db.exec('getSinglequestionQuestion', {id})).recordset[0]
+  const singlequestion:Question[]= await (await  _db.exec('GetAnswersWithDetails', {id})).recordset[0]
   if(!singlequestion){
      return res.status(404).json({error:'Question Not Found'})
      
