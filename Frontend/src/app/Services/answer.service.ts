@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { Subject, Observable } from 'rxjs';
-import { Message, Question } from '../Interfaces';
+import { addAnswer, Message, Question } from '../Interfaces';
 
 @Injectable({
   providedIn: 'root'
@@ -10,27 +10,11 @@ import { Message, Question } from '../Interfaces';
 export class AnswerService {
 
   constructor( private http:HttpClient) { }
-  booking$=new Subject<Question[]>()
+ 
 
-  addQuestion(question:AddQuestion):Observable<Message>{
-    return this.http.post<Message>('http://localhost:4200/',question)
+  addAnswer(answer:addAnswer):Observable<Message>{
+    return this.http.post<Message>('http://localhost:4500/answer/addanswer',answer)
   }
   
-  getUserQuestion():Observable<Question[]>{
-    return this.http.get<Question[]>('http://localhost:4002/questions/emails');
-  }
-
-  getOneBooking(title:string):Observable<Question>{
-   return  this.http.get<Question>(`http://localhost:4002/flights/${Title}`)
-  }
-
-  deleteQuestion(id:string):Observable<Message>{
-    return  this.http.delete<Message>(`http://localhost:4002/flights/${id}`)
-   }
-
-   updateBooking(id:string,updatedBooking:AddBooking):Observable<Booking>{
-    return  this.http.put<Booking>(`http://localhost:4002/flights/${id}`, updatedBooking)
-   }
- 
  
 }
