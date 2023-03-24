@@ -16,6 +16,7 @@ id: any;
     tags: string[];
     createdAt: Date
     author: string;
+    
 
    
    
@@ -27,6 +28,13 @@ id: any;
     createdAt: Date
 
 
+  }
+  export interface addAnswer {
+    id: string;
+    userId: string;
+    username: string;
+    content: string;
+    createdAt: Date;
   }
 
   export interface Answer {

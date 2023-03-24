@@ -33,7 +33,7 @@
 <div class="divquestion"  *ngFor=" let question of questions ">
     <div class="matrix">
     <div class="votes">
-         <p>{{question. id}} </p>
+         <p>{{question. id | truncate:8}} </p>
          <p>{{answers}} Answers</p>
          <p>{{views}} Views</p>
     </div>
@@ -47,10 +47,11 @@
 </div>
 </div>
 <div class="tagstime">
+
 <div style="background-color: rgb(154, 146, 146); padding: 0.5rem; border-radius: 0.5rem;">{{question.tags}}</div>
 
- <p> Username: {{ question.author}}</p>
-    {{question.createdAt | date}}
+ <p>Posted by User: {{ question.id |truncate:8}}</p>
+   <p>Posted on:  {{question.createdAt | date}}</p> 
 </div>
 <div><hr></div>
 
